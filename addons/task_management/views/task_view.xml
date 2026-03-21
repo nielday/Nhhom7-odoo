@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_task_search" model="ir.ui.view">
+        <field name="name">task.management.task.search</field>
+        <field name="model">task.management.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="nhan_vien_id"/>
+                
+                <!-- Filter theo nhân viên -->
+                <filter string="Chưa hoàn thành" name="not_done" domain="[('state', '!=', 'done')]"/>
+                <separator/>
+                <filter string="Ưu tiên cao" name="high_priority" domain="[('priority', 'in', ('2','3'))]"/>
+
+                <group expand="0" string="Nhóm theo">
+                    <filter string="Trạng thái" name="group_by_state" context="{'group_by': 'state'}"/>
+                    <filter string="Khách hàng" name="group_by_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Người thực hiện" name="group_by_nhan_vien" context="{'group_by': 'nhan_vien_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">task.management.task.kanban</field>
+        <field name="model">task.management.task</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column" records_draggable="true" edit="false" delete="false" quick_create="false">
+                <field name="state"/>
+                <field name="priority"/>
+                <field name="nhan_vien_id"/>
+                <field name="activity_ids"/>
+                <progressbar field="priority" colors='{"3": "danger", "2": "warning", "1": "success"}'/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card">
+                            <div class="o_kanban_record_top">
+                                <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                <div class="o_kanban_record_top_right">
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <span t-if="record.partner_id.raw_value" class="text-primary">
+                                    <i class="fa fa-user" title="Khách hàng"/> <field name="partner_id"/>
+                                </span>
+                                <div t-if="record.deadline.raw_value" class="text-muted mt-1">
+                                    <i class="fa fa-clock-o" title="Hạn chót"/> <field name="deadline"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom mt-2">
+                                <div class="oe_kanban_bottom_left">
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="nhan_vien_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_task_tree" model="ir.ui.view">
+        <field name="name">task.management.task.tree</field>
+        <field name="model">task.management.task</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="deadline and deadline &lt; current_date and state != 'done'" 
+                  decoration-success="state == 'done'" 
+                  decoration-info="state == 'in_progress'"
+                  multi_edit="1">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="nhan_vien_id" optional="show"/>
+                <field name="deadline" optional="show"/>
+                <field name="progress" widget="progressbar" optional="show"/>
+                <field name="priority" widget="priority" optional="show"/>
+                <field name="state" widget="badge" 
+                       decoration-success="state == 'done'" 
+                       decoration-warning="state == 'in_progress'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_task_form" model="ir.ui.view">
+        <field name="name">task.management.task.form</field>
+        <field name="model">task.management.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_in_progress" string="Bắt đầu làm" type="object" class="oe_highlight" states="todo"/>
+                    <button name="action_done" string="Hoàn thành" type="object" class="btn-success" states="in_progress"/>
+                    <button name="action_todo" string="Quay lại Cần làm" type="object" states="in_progress"/>
+                    <button name="action_cancel" string="Hủy" type="object" states="todo,in_progress"/>
+                    <field name="state" widget="statusbar" statusbar_visible="todo,in_progress,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="Ví dụ: Thiết kế banner quảng cáo..."/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="nhan_vien_id"/>
+                            <field name="priority" widget="priority"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="deadline"/>
+                            <field name="progress" widget="percentpie"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mô tả công việc">
+                            <field name="description" placeholder="Nhập chi tiết yêu cầu công việc tại đây..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Graph View - Biểu đồ thống kê -->
+    <record id="view_task_graph" model="ir.ui.view">
+        <field name="name">task.management.task.graph</field>
+        <field name="model">task.management.task</field>
+        <field name="arch" type="xml">
+            <graph string="Thống kê công việc" type="bar" sample="1">
+                <field name="state" type="col"/>
+                <field name="nhan_vien_id" type="row"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pivot View - Bảng phân tích -->
+    <record id="view_task_pivot" model="ir.ui.view">
+        <field name="name">task.management.task.pivot</field>
+        <field name="model">task.management.task</field>
+        <field name="arch" type="xml">
+            <pivot string="Phân tích công việc" sample="1">
+                <field name="state" type="col"/>
+                <field name="nhan_vien_id" type="row"/>
+                <field name="partner_id" type="row"/>
+                <field name="priority" type="row"/>
+                <field name="progress" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Action chính - Quản lý công việc -->
+    <record id="action_task_management" model="ir.actions.act_window">
+        <field name="name">Quản Lý Công Việc</field>
+        <field name="res_model">task.management.task</field>
+        <field name="view_mode">kanban,tree,form,graph,pivot</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Tạo công việc mới đầu tiên của bạn!
+          </p>
+        </field>
+    </record>
+
+    <!-- Action Dashboard - Thống kê theo trạng thái -->
+    <record id="action_task_dashboard_by_state" model="ir.actions.act_window">
+        <field name="name">Thống kê theo trạng thái</field>
+        <field name="res_model">task.management.task</field>
+        <field name="view_mode">graph,pivot,tree,form</field>
+        <field name="context">{'graph_mode': 'bar', 'graph_groupbys': ['state']}</field>
+    </record>
+
+    <!-- Action Dashboard - Thống kê theo người thực hiện -->
+    <record id="action_task_dashboard_by_user" model="ir.actions.act_window">
+        <field name="name">Thống kê theo người thực hiện</field>
+        <field name="res_model">task.management.task</field>
+        <field name="view_mode">graph,pivot,tree,form</field>
+        <field name="context">{'graph_mode': 'pie', 'graph_groupbys': ['nhan_vien_id']}</field>
+    </record>
+
+    <!-- Action Dashboard - Thống kê theo độ ưu tiên -->
+    <record id="action_task_dashboard_by_priority" model="ir.actions.act_window">
+        <field name="name">Thống kê theo độ ưu tiên</field>
+        <field name="res_model">task.management.task</field>
+        <field name="view_mode">graph,pivot,tree,form</field>
+        <field name="context">{'graph_mode': 'bar', 'graph_groupbys': ['priority']}</field>
+    </record>
+
+    <!-- Action Dashboard - Thống kê theo khách hàng -->
+    <record id="action_task_dashboard_by_partner" model="ir.actions.act_window">
+        <field name="name">Thống kê theo khách hàng</field>
+        <field name="res_model">task.management.task</field>
+        <field name="view_mode">graph,pivot,tree,form</field>
+        <field name="context">{'graph_mode': 'pie', 'graph_groupbys': ['partner_id']}</field>
+    </record>
+
+    <!-- Action Dashboard - Phân tích tiến độ tổng hợp -->
+    <record id="action_task_dashboard_analysis" model="ir.actions.act_window">
+        <field name="name">Phân tích tổng hợp</field>
+        <field name="res_model">task.management.task</field>
+        <field name="view_mode">pivot,graph,tree,form</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

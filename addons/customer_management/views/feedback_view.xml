@@ -1,0 +1,46 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_feedback_tree" model="ir.ui.view">
+        <field name="name">khach_hang.feedback.tree</field>
+        <field name="model">khach_hang.feedback</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="question"/>
+                <field name="supporter"/>
+                <field name="answer"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_feedback_form" model="ir.ui.view">
+        <field name="name">khach_hang.feedback.form</field>
+        <field name="model">khach_hang.feedback</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="customer_id"/>
+                        <field name="question"/>
+                        <field name="supporter"/>
+                        <field name="answer"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_feedback_list" model="ir.actions.act_window">
+        <field name="name">Phản Hồi</field>
+        <field name="res_model">khach_hang.feedback</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_feedback_list" name="Phản Hồi" parent="menu_customer_root" action="action_feedback_list" sequence="50"/>
+</odoo>

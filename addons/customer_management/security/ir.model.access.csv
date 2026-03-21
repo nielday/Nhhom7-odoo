@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer,khach_hang.customer,model_khach_hang_customer,,1,1,1,1
+access_product,khach_hang.product,model_khach_hang_product,,1,1,1,1
+access_order,khach_hang.order,model_khach_hang_order,,1,1,1,1
+access_feedback,khach_hang.feedback,model_khach_hang_feedback,,1,1,1,1
+access_potential_customer,khach_hang.potential_customer,model_khach_hang_potential_customer,,1,1,1,1
+access_care_activity,khach_hang.care_activity,model_khach_hang_care_activity,,1,1,1,1
+access_product_category,khach_hang.product.category,model_khach_hang_product_category,,1,1,1,1

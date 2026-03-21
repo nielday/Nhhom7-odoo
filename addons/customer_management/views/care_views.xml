@@ -1,0 +1,43 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_care_activity_tree" model="ir.ui.view">
+        <field name="name">khach_hang.care_activity.tree</field>
+        <field name="model">khach_hang.care_activity</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="care_date"/>
+                <field name="care_staff"/>
+                <field name="contact_method"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_care_activity_form" model="ir.ui.view">
+        <field name="name">khach_hang.care_activity.form</field>
+        <field name="model">khach_hang.care_activity</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="customer_id" readonly="1"/>
+                        <field name="care_date"/>
+                        <field name="care_staff"/>
+                        <field name="contact_method"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action and Menu -->
+    <record id="action_care_activity_list" model="ir.actions.act_window">
+        <field name="name">Hoạt Động Chăm Sóc</field>
+        <field name="res_model">khach_hang.care_activity</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_care_activity_list" name="Hoạt Động Chăm Sóc" parent="menu_customer_root" action="action_care_activity_list" sequence="70"/>
+</odoo>

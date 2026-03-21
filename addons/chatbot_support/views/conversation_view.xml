@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Conversation Tree View -->
+    <record id="view_conversation_tree" model="ir.ui.view">
+        <field name="name">chatbot.conversation.tree</field>
+        <field name="model">chatbot.conversation</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state == 'closed'" decoration-info="state == 'active'">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="message_count"/>
+                <field name="start_time"/>
+                <field name="duration"/>
+                <field name="rating"/>
+                <field name="state" widget="badge" decoration-success="state == 'closed'" decoration-info="state == 'active'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Conversation Form View -->
+    <record id="view_conversation_form" model="ir.ui.view">
+        <field name="name">chatbot.conversation.form</field>
+        <field name="model">chatbot.conversation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_close_conversation" string="Đóng cuộc hội thoại" 
+                            type="object" class="btn-primary" states="active"/>
+                    <field name="state" widget="statusbar" statusbar_visible="active,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="session_id"/>
+                            <field name="message_count"/>
+                        </group>
+                        <group>
+                            <field name="start_time"/>
+                            <field name="end_time"/>
+                            <field name="duration"/>
+                        </group>
+                    </group>
+                    <group string="Đánh giá">
+                        <field name="rating" widget="radio"/>
+                        <field name="feedback"/>
+                    </group>
+                    <notebook>
+                        <page string="Tin nhắn">
+                            <field name="message_ids" readonly="1">
+                                <tree decoration-info="message_type == 'user'" 
+                                      decoration-success="message_type == 'bot'">
+                                    <field name="create_date"/>
+                                    <field name="message_type"/>
+                                    <field name="content"/>
+                                    <field name="response_time" optional="show"/>
+                                    <field name="is_helpful" widget="boolean_toggle" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Metadata" groups="base.group_no_one">
+                            <group>
+                                <field name="user_ip"/>
+                                <field name="user_agent"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" mode="tree,form"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Conversation Search View -->
+    <record id="view_conversation_search" model="ir.ui.view">
+        <field name="name">chatbot.conversation.search</field>
+        <field name="model">chatbot.conversation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="session_id"/>
+                <filter string="Đang hoạt động" name="active" domain="[('state', '=', 'active')]"/>
+                <filter string="Đã đóng" name="closed" domain="[('state', '=', 'closed')]"/>
+                <filter string="Hôm nay" name="today" domain="[('start_time', '&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter string="Trạng thái" name="group_by_state" context="{'group_by': 'state'}"/>
+                    <filter string="Khách hàng" name="group_by_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Đánh giá" name="group_by_rating" context="{'group_by': 'rating'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Conversation Action -->
+    <record id="action_conversation" model="ir.actions.act_window">
+        <field name="name">Lịch sử Chat</field>
+        <field name="res_model">chatbot.conversation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_today': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Chưa có cuộc hội thoại nào
+            </p>
+        </field>
+    </record>
+</odoo>

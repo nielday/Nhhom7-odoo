@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Phong Asia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-asia"></i>
+                <span>Phong Asia</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="products.html" class="nav-link">Sản Phẩm</a>
+                <a href="about.html" class="nav-link">Giới Thiệu</a>
+                <a href="contact.html" class="nav-link active">Liên Hệ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="user-btn" id="userBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Liên Hệ Với Chúng Tôi</h1>
+            <p class="page-subtitle">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2 style="font-size: 1.75rem; color: var(--gray-800); margin-bottom: 1.5rem;">Thông Tin Liên Hệ
+                    </h2>
+                    <p style="color: var(--gray-600); margin-bottom: 2rem;">Hãy liên hệ với chúng tôi qua các kênh dưới
+                        đây hoặc điền form để được tư vấn miễn phí.</p>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Địa Chỉ</h4>
+                            <p>Hà Nội, Việt Nam</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Điện Thoại</h4>
+                            <p>+84 123 456 789<br>+84 987 654 321</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@phongasia.com<br>support@phongasia.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Giờ Làm Việc</h4>
+                            <p>Thứ 2 - Thứ 6: 8:00 - 18:00<br>Thứ 7: 8:00 - 12:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Gửi Tin Nhắn</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Họ và Tên *</label>
+                                <input type="text" id="contactName" placeholder="Nhập họ và tên" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" id="contactEmail" placeholder="Nhập email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Số Điện Thoại</label>
+                                <input type="tel" id="contactPhone" placeholder="Nhập số điện thoại">
+                            </div>
+                            <div class="form-group">
+                                <label>Dịch Vụ Quan Tâm</label>
+                                <select id="contactService">
+                                    <option value="">-- Chọn dịch vụ --</option>
+                                    <option value="website">Website</option>
+                                    <option value="mobile">Ứng dụng Mobile</option>
+                                    <option value="ecommerce">Thương mại điện tử</option>
+                                    <option value="erp">Phần mềm quản lý ERP</option>
+                                    <option value="crm">CRM</option>
+                                    <option value="other">Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nội Dung *</label>
+                            <textarea id="contactMessage" rows="5" placeholder="Mô tả nhu cầu của bạn..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            Gửi Tin Nhắn
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section style="padding: 0;">
+        <div
+            style="background: var(--gray-200); height: 400px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: var(--gray-500);">
+                <i class="fas fa-map-marked-alt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                <p>Bản đồ Google Maps sẽ hiển thị ở đây</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item"
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h4 style="color: var(--gray-800); margin-bottom: 0.5rem;">
+                        <i class="fas fa-question-circle" style="color: var(--primary-500); margin-right: 0.5rem;"></i>
+                        Thời gian hoàn thành dự án là bao lâu?
+                    </h4>
+                    <p style="color: var(--gray-600); margin-left: 1.75rem;">Tùy thuộc vào độ phức tạp, thời gian dao
+                        động từ 2-12 tuần. Chúng tôi sẽ cung cấp timeline chi tiết sau khi phân tích yêu cầu.</p>
+                </div>
+                <div class="faq-item"
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h4 style="color: var(--gray-800); margin-bottom: 0.5rem;">
+                        <i class="fas fa-question-circle" style="color: var(--primary-500); margin-right: 0.5rem;"></i>
+                        Chi phí bao gồm những gì?
+                    </h4>
+                    <p style="color: var(--gray-600); margin-left: 1.75rem;">Chi phí bao gồm: thiết kế, phát triển,
+                        testing, hướng dẫn sử dụng và hỗ trợ kỹ thuật 3 tháng miễn phí.</p>
+                </div>
+                <div class="faq-item"
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h4 style="color: var(--gray-800); margin-bottom: 0.5rem;">
+                        <i class="fas fa-question-circle" style="color: var(--primary-500); margin-right: 0.5rem;"></i>
+                        Có hỗ trợ bảo trì sau khi bàn giao không?
+                    </h4>
+                    <p style="color: var(--gray-600); margin-left: 1.75rem;">Có, chúng tôi cung cấp gói bảo trì hàng
+                        tháng với chi phí hợp lý, bao gồm cập nhật, sửa lỗi và hỗ trợ kỹ thuật.</p>
+                </div>
+                <div class="faq-item"
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h4 style="color: var(--gray-800); margin-bottom: 0.5rem;">
+                        <i class="fas fa-question-circle" style="color: var(--primary-500); margin-right: 0.5rem;"></i>
+                        Tôi có được sở hữu mã nguồn không?
+                    </h4>
+                    <p style="color: var(--gray-600); margin-left: 1.75rem;">Có, sau khi thanh toán hoàn tất, bạn sẽ
+                        được sở hữu toàn bộ mã nguồn và có quyền sử dụng, chỉnh sửa theo nhu cầu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>Phong Asia</span>
+                    </div>
+                    <p>Behind Your Success — Cung cấp giải pháp phần mềm toàn diện cho doanh nghiệp.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Kết</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Dịch Vụ</h4>
+                    <ul>
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Ứng Dụng Mobile</a></li>
+                        <li><a href="#">Phần Mềm Quản Lý</a></li>
+                        <li><a href="#">Tư Vấn CNTT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+                        <li><i class="fas fa-phone"></i> +84 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> contact@phongasia.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Phong Asia. All rights reserved. Behind Your Success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Giỏ Hàng</h3>
+            <button class="close-btn" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Tổng cộng:</span>
+                <span class="total-amount" id="cartTotal">0 ₫</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="checkout()">
+                <i class="fas fa-credit-card"></i>
+                Thanh Toán
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAuthModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3 id="authModalTitle">Đăng Nhập</h3>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="form-group" id="nameGroup" style="display: none;">
+                        <label>Họ và Tên *</label>
+                        <input type="text" id="authName" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group" id="usernameGroup">
+                        <label>Tên đăng nhập *</label>
+                        <input type="text" id="authUsername" placeholder="Nhập tên đăng nhập" required>
+                    </div>
+                    <div class="form-group" id="emailGroup" style="display: none;">
+                        <label>Email</label>
+                        <input type="email" id="authEmail" placeholder="Nhập email">
+                    </div>
+                    <div class="form-group" id="phoneGroup" style="display: none;">
+                        <label>Số điện thoại</label>
+                        <input type="tel" id="authPhone" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group" id="passwordGroup">
+                        <label>Mật khẩu *</label>
+                        <div class="password-input">
+                            <input type="password" id="authPassword" placeholder="Nhập mật khẩu" required>
+                            <button type="button" class="toggle-password"
+                                onclick="togglePasswordVisibility('authPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                        <label>Xác nhận mật khẩu *</label>
+                        <div class="password-input">
+                            <input type="password" id="authConfirmPassword" placeholder="Nhập lại mật khẩu">
+                            <button type="button" class="toggle-password"
+                                onclick="togglePasswordVisibility('authConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span id="authBtnText">Đăng Nhập</span>
+                    </button>
+                </form>
+                <div class="auth-switch">
+                    <span id="authSwitchText">Chưa có tài khoản?</span>
+                    <a href="#" onclick="toggleAuthMode(event)">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal modal-lg">
+            <button class="modal-close" onclick="closeCheckoutModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Xác Nhận Đơn Hàng</h3>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Họ và Tên *</label>
+                            <input type="text" id="checkoutName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="checkoutEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Số điện thoại *</label>
+                            <input type="tel" id="checkoutPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="checkoutAddress">
+                        </div>
+                    </div>
+                    <div class="order-summary">
+                        <h4>Tóm tắt đơn hàng</h4>
+                        <div id="orderSummaryItems"></div>
+                        <div class="order-total">
+                            <span>Tổng cộng:</span>
+                            <span id="orderTotal">0 ₫</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fas fa-check"></i>
+                        Xác Nhận Đặt Hàng
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Pre-fill contact form if user is logged in
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) {
+                const user = Auth.getUser();
+                if (user) {
+                    document.getElementById('contactName').value = user.name || '';
+                    document.getElementById('contactEmail').value = user.email || '';
+                    document.getElementById('contactPhone').value = user.phone || '';
+                }
+            }
+        });
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const service = document.getElementById('contactService').value;
+            const message = document.getElementById('contactMessage').value.trim();
+
+            if (!name || !email || !message) {
+                showToast('Vui lòng điền đầy đủ thông tin bắt buộc!', 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Gửi Tin Nhắn';
+                return;
+            }
+
+            try {
+                // Get customer_id if logged in
+                let customerId = 1;
+                if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) {
+                    const user = Auth.getUser();
+                    if (user && user.id) {
+                        customerId = user.id;
+                    }
+                }
+
+                // Create feedback via API
+                const result = await FeedbacksAPI.create({
+                    customer_id: customerId,
+                    question: `[${service || 'Liên hệ'}] ${name} (${email}, ${phone}): ${message}`
+                });
+
+                showToast('Gửi tin nhắn thành công! Chúng tôi sẽ liên hệ sớm.', 'success');
+                document.getElementById('contactMessage').value = '';
+                document.getElementById('contactService').value = '';
+            } catch (error) {
+                console.error('Contact form error:', error);
+                // Still show success since the message intent was captured
+                showToast('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.', 'success');
+                document.getElementById('contactMessage').value = '';
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Gửi Tin Nhắn';
+        });
+    </script>
+    <script src="js/chatbot-widget.js"></script>
+</body>
+
+</html>

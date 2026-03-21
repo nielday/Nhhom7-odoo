@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Main Template with Navigation Menu -->
+    <template id="customer_management_main_template">
+        <t t-call="web.layout">
+            <div class="container">
+                <!-- Navigation Menu -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Customer Management</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/customer_management/customers">Customers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/customer_management/products">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/customer_management/orders">Orders</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/customer_management/feedback">Feedback</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/customer_management/potential_customers">Potential Customers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/customer_management/care">Care Records</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Content Area -->
+                <div class="content">
+                    <t t-call="customer_management.customer_list_template"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Customer List Template -->
+    <template id="customer_list_template">
+        <h2>Customer List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="customers" t-as="customer">
+                    <tr>
+                        <td><t t-esc="customer.name"/></td>
+                        <td><t t-esc="customer.email"/></td>
+                        <td><t t-esc="customer.phone"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+    </template>
+
+<template id="product_list_template">
+    <h2>Product List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <t t-foreach="products" t-as="product">
+                <tr>
+                    <td><t t-esc="product.name"/></td>
+                    <td><t t-esc="product.price"/></td>
+                </tr>
+            </t>
+        </tbody>
+    </table>
+</template>
+
+<!-- Order List Template -->
+<template id="order_list_template">
+    <h2>Order List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Order Date</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <t t-foreach="orders" t-as="order">
+                <tr>
+                    <td><t t-esc="order.customer_id.name"/></td>
+                    <td><t t-esc="order.order_date"/></td>
+                    <td><t t-esc="order.total_amount"/></td>
+                </tr>
+            </t>
+        </tbody>
+    </table>
+</template>
+
+    <!-- Feedback List Template -->
+    <template id="feedback_list_template">
+        <h2>Feedback List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Question</th>
+                    <th>Support Staff</th>
+                    <th>Create Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="feedbacks" t-as="feedback">
+                    <tr>
+                        <td><t t-esc="feedback.customer_id.name"/></td>
+                        <td><t t-esc="feedback.question"/></td>
+                        <td><t t-esc="feedback.support_staff_id.name"/></td>
+                        <td><t t-esc="feedback.create_date"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- Potential Customer List Template -->
+    <template id="potential_customer_list_template">
+        <h2>Potential Customer List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Product Categories</th>
+                    <th>Conversion Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="potential_customers" t-as="potential_customer">
+                    <tr>
+                        <td><t t-esc="potential_customer.name"/></td>
+                        <td>
+                            <t t-foreach="potential_customer.product_category_ids" t-as="category">
+                                <span class="badge bg-secondary me-1"><t t-esc="category.name"/></span>
+                            </t>
+                        </td>
+                        <td><t t-esc="potential_customer.conversion_date"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- Care Record List Template -->
+    <template id="care_list_template">
+        <h2>Care Record List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Needs Care</th>
+                    <th>Care Date</th>
+                    <th>Responsible</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="care_records" t-as="care">
+                    <tr>
+                        <td><t t-esc="care.customer_id.name"/></td>
+                        <td><t t-esc="care.needs_care and 'Yes' or 'No'"/></td>
+                        <td><t t-esc="care.care_date"/></td>
+                        <td><t t-esc="care.responsible_id.name"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+    </template>
+</odoo>

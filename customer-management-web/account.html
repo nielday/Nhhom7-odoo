@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài Khoản - Phong Asia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-asia"></i>
+                <span>Phong Asia</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="products.html" class="nav-link">Sản Phẩm</a>
+                <a href="about.html" class="nav-link">Giới Thiệu</a>
+                <a href="contact.html" class="nav-link">Liên Hệ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="user-btn" id="userBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-wrapper">
+                <!-- Sidebar -->
+                <aside class="account-sidebar">
+                    <div class="account-user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3 id="accountUserName">Khách hàng</h3>
+                        <p id="accountUsername">@username</p>
+                    </div>
+                    <nav class="account-nav">
+                        <a href="#profile" class="account-nav-item active" onclick="switchTab('profile', this)">
+                            <i class="fas fa-user"></i>
+                            <span>Thông tin cá nhân</span>
+                        </a>
+                        <a href="#orders" class="account-nav-item" onclick="switchTab('orders', this)">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Đơn hàng của tôi</span>
+                        </a>
+                        <a href="#settings" class="account-nav-item" onclick="switchTab('settings', this)">
+                            <i class="fas fa-cog"></i>
+                            <span>Đổi mật khẩu</span>
+                        </a>
+                        <a href="#" class="account-nav-item text-danger" onclick="handleLogout(); return false;">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="account-main">
+                    <!-- Profile Tab -->
+                    <div id="profileTab" class="account-tab active">
+                        <div class="account-card">
+                            <div class="account-card-header">
+                                <h2><i class="fas fa-user"></i> Thông tin cá nhân</h2>
+                            </div>
+                            <div class="account-card-body">
+                                <form id="profileForm">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Họ và tên *</label>
+                                            <input type="text" id="profileName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tên đăng nhập</label>
+                                            <input type="text" id="profileUsername" readonly disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" id="profileEmail">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Số điện thoại</label>
+                                            <input type="tel" id="profilePhone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Địa chỉ</label>
+                                        <textarea id="profileAddress" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save"></i>
+                                            Lưu thay đổi
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div id="ordersTab" class="account-tab">
+                        <div class="account-card">
+                            <div class="account-card-header">
+                                <h2><i class="fas fa-shopping-bag"></i> Đơn hàng của tôi</h2>
+                            </div>
+                            <div class="account-card-body">
+                                <div id="ordersList" class="orders-list">
+                                    <div class="loading">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        <p>Đang tải đơn hàng...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div id="settingsTab" class="account-tab">
+                        <div class="account-card">
+                            <div class="account-card-header">
+                                <h2><i class="fas fa-lock"></i> Đổi mật khẩu</h2>
+                            </div>
+                            <div class="account-card-body">
+                                <form id="passwordForm">
+                                    <div class="form-group">
+                                        <label>Mật khẩu hiện tại *</label>
+                                        <div class="password-input">
+                                            <input type="password" id="currentPassword" required>
+                                            <button type="button" class="toggle-password"
+                                                onclick="togglePasswordVisibility('currentPassword')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mật khẩu mới *</label>
+                                        <div class="password-input">
+                                            <input type="password" id="newPassword" required minlength="6">
+                                            <button type="button" class="toggle-password"
+                                                onclick="togglePasswordVisibility('newPassword')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <small class="form-hint">Mật khẩu phải có ít nhất 6 ký tự</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Xác nhận mật khẩu mới *</label>
+                                        <div class="password-input">
+                                            <input type="password" id="confirmNewPassword" required>
+                                            <button type="button" class="toggle-password"
+                                                onclick="togglePasswordVisibility('confirmNewPassword')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-key"></i>
+                                            Đổi mật khẩu
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>Phong Asia</span>
+                    </div>
+                    <p>Behind Your Success — Cung cấp giải pháp phần mềm toàn diện cho doanh nghiệp.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Kết</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+                        <li><i class="fas fa-phone"></i> +84 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> contact@phongasia.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Phong Asia. All rights reserved. Behind Your Success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/chatbot-widget.js"></script>
+</body>
+
+</html>

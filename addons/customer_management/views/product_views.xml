@@ -1,0 +1,61 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_product_tree" model="ir.ui.view">
+        <field name="name">khach_hang.product.tree</field>
+        <field name="model">khach_hang.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="price"/>
+                <field name="stock_quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_product_form" model="ir.ui.view">
+        <field name="name">khach_hang.product.form</field>
+        <field name="model">khach_hang.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="category_id" options="{'no_create': True}"/>
+                        <field name="price"/>
+                        <field name="stock_quantity"/>
+                        <field name="stock_alert_threshold"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View để phân loại -->
+    <record id="view_product_search" model="ir.ui.view">
+        <field name="name">khach_hang.product.search</field>
+        <field name="model">khach_hang.product</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="category_id"/>
+                <filter string="Tồn Kho Thấp" name="low_stock" domain="[('stock_quantity', '&lt;', 'stock_alert_threshold')]"/>
+                <group expand="1" string="Nhóm Theo">
+                    <filter string="Danh Mục" name="group_by_category" context="{'group_by': 'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action and Menu -->
+    <record id="action_product_list" model="ir.actions.act_window">
+        <field name="name">Sản Phẩm</field>
+        <field name="res_model">khach_hang.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_product_search"/>
+    </record>
+
+    <menuitem id="menu_product_list" name="Sản Phẩm" parent="menu_customer_root" action="action_product_list" sequence="30"/>
+</odoo>

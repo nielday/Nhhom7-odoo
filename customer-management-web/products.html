@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - Phong Asia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-asia"></i>
+                <span>Phong Asia</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="products.html" class="nav-link active">Sản Phẩm</a>
+                <a href="about.html" class="nav-link">Giới Thiệu</a>
+                <a href="contact.html" class="nav-link">Liên Hệ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="user-btn" id="userBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header (default) -->
+    <section class="page-header" id="defaultPageHeader">
+        <div class="container">
+            <h1 class="page-title">Danh Sách Dự Án</h1>
+            <p class="page-subtitle">Khám phá các giải pháp công nghệ thông tin phù hợp với doanh nghiệp của bạn</p>
+        </div>
+    </section>
+
+    <!-- Category Hero Banner (shown when ?category=X) -->
+    <section class="category-hero" id="categoryHero" style="display:none">
+        <div class="container">
+            <nav class="breadcrumb" id="categoryBreadcrumb"></nav>
+            <div class="category-hero-content">
+                <div class="category-hero-icon" id="categoryHeroIcon"></div>
+                <div class="category-hero-info">
+                    <h1 id="categoryHeroTitle"></h1>
+                    <p id="categoryHeroDesc"></p>
+                    <div class="category-hero-stats" id="categoryHeroStats"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Page -->
+    <section class="products-page">
+        <div class="container">
+            <!-- Filters -->
+            <div class="products-filters">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm dự án..." oninput="searchProducts()">
+                </div>
+                <div class="filter-buttons" id="filterButtons">
+                    <button class="filter-btn active" onclick="filterProducts('all', this)">Tất cả</button>
+                    <!-- Dynamic category buttons loaded from API -->
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Đang tải sản phẩm...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Categories -->
+    <section class="related-categories" id="relatedCategories" style="display:none">
+        <div class="container">
+            <h2 class="section-title">Danh Mục Khác</h2>
+            <div class="related-categories-grid" id="relatedCategoriesGrid"></div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Không Tìm Thấy Dự Án Phù Hợp?</h2>
+                <p>Liên hệ với chúng tôi để được tư vấn giải pháp tùy chỉnh theo nhu cầu của bạn.</p>
+                <a href="contact.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-paper-plane"></i>
+                    Liên Hệ Ngay
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>Phong Asia</span>
+                    </div>
+                    <p>Behind Your Success — Cung cấp giải pháp phần mềm toàn diện cho doanh nghiệp.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Kết</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Dịch Vụ</h4>
+                    <ul>
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Ứng Dụng Mobile</a></li>
+                        <li><a href="#">Phần Mềm Quản Lý</a></li>
+                        <li><a href="#">Tư Vấn CNTT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+                        <li><i class="fas fa-phone"></i> +84 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> contact@phongasia.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Phong Asia. All rights reserved. Behind Your Success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Giỏ Hàng</h3>
+            <button class="close-btn" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Tổng cộng:</span>
+                <span class="total-amount" id="cartTotal">0 ₫</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="checkout()">
+                <i class="fas fa-credit-card"></i>
+                Thanh Toán
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAuthModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3 id="authModalTitle">Đăng Nhập</h3>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="form-group" id="nameGroup" style="display: none;">
+                        <label>Họ và Tên *</label>
+                        <input type="text" id="authName" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group" id="usernameGroup">
+                        <label>Tên đăng nhập *</label>
+                        <input type="text" id="authUsername" placeholder="Nhập tên đăng nhập" required>
+                    </div>
+                    <div class="form-group" id="emailGroup" style="display: none;">
+                        <label>Email</label>
+                        <input type="email" id="authEmail" placeholder="Nhập email">
+                    </div>
+                    <div class="form-group" id="phoneGroup" style="display: none;">
+                        <label>Số điện thoại</label>
+                        <input type="tel" id="authPhone" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group" id="passwordGroup">
+                        <label>Mật khẩu *</label>
+                        <div class="password-input">
+                            <input type="password" id="authPassword" placeholder="Nhập mật khẩu" required>
+                            <button type="button" class="toggle-password"
+                                onclick="togglePasswordVisibility('authPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                        <label>Xác nhận mật khẩu *</label>
+                        <div class="password-input">
+                            <input type="password" id="authConfirmPassword" placeholder="Nhập lại mật khẩu">
+                            <button type="button" class="toggle-password"
+                                onclick="togglePasswordVisibility('authConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span id="authBtnText">Đăng Nhập</span>
+                    </button>
+                </form>
+                <div class="auth-switch">
+                    <span id="authSwitchText">Chưa có tài khoản?</span>
+                    <a href="#" onclick="toggleAuthMode(event)">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal modal-lg">
+            <button class="modal-close" onclick="closeCheckoutModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Xác Nhận Đơn Hàng</h3>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Họ và Tên *</label>
+                            <input type="text" id="checkoutName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="checkoutEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Số điện thoại *</label>
+                            <input type="tel" id="checkoutPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="checkoutAddress">
+                        </div>
+                    </div>
+                    <div class="order-summary">
+                        <h4>Tóm tắt đơn hàng</h4>
+                        <div id="orderSummaryItems"></div>
+                        <div class="order-total">
+                            <span>Tổng cộng:</span>
+                            <span id="orderTotal">0 ₫</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fas fa-check"></i>
+                        Xác Nhận Đặt Hàng
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/chatbot-widget.js"></script>
+</body>
+
+</html>

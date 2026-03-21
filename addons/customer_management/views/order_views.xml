@@ -1,0 +1,62 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">khach_hang.order.tree</field>
+        <field name="model">khach_hang.order</field>
+        <field name="arch" type="xml">
+            <tree delete="false" decoration-muted="state == 'cancel'">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="date_order"/>
+                <field name="total_amount"/>
+                <field name="state"/>
+                <field name="delivery_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">khach_hang.order.form</field>
+        <field name="model">khach_hang.order</field>
+        <field name="arch" type="xml">
+            <form delete="false">
+                <header>
+                    <button name="action_confirm" string="Xác Nhận" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_ship" string="Giao Hàng" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'confirmed')]}"/>
+                    <button name="action_done" string="Hoàn Thành" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'shipping')]}"/>
+                    <button name="action_cancel" string="Hủy Đơn" type="object" class="btn-secondary" attrs="{'invisible': [('state', 'in', ['done', 'cancel'])]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,shipping,done,"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="customer_id"/>
+                            <field name="date_order"/>
+                        </group>
+                        <group>
+                            <field name="delivery_date"/>
+                            <field name="delivery_days"/>
+                            <field name="total_amount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sản phẩm">
+                            <field name="product_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action and Menu -->
+    <record id="action_order_list" model="ir.actions.act_window">
+        <field name="name">Đơn Hàng</field>
+        <field name="res_model">khach_hang.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_order_list" name="Đơn Hàng" parent="menu_customer_root" action="action_order_list" sequence="40"/>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu gốc -->
+    <menuitem id="menu_task_root" 
+              name="Quản Lý Công Việc" 
+              sequence="10"/>
+
+    <!-- Menu Hoạt động -->
+    <menuitem id="menu_task_main" 
+              name="Hoạt động" 
+              parent="menu_task_root" 
+              sequence="1"/>
+
+    <menuitem id="menu_task_action" 
+              name="Tất cả công việc" 
+              parent="menu_task_main" 
+              action="action_task_management" 
+              sequence="1"/>
+
+    <!-- Menu Dashboard - Báo cáo thống kê -->
+    <menuitem id="menu_task_dashboard" 
+              name="Báo cáo &amp; Thống kê" 
+              parent="menu_task_root" 
+              sequence="10"/>
+
+    <menuitem id="menu_dashboard_by_state" 
+              name="Theo trạng thái" 
+              parent="menu_task_dashboard" 
+              action="action_task_dashboard_by_state" 
+              sequence="1"/>
+
+    <menuitem id="menu_dashboard_by_user" 
+              name="Theo người thực hiện" 
+              parent="menu_task_dashboard" 
+              action="action_task_dashboard_by_user" 
+              sequence="2"/>
+
+    <menuitem id="menu_dashboard_by_priority" 
+              name="Theo độ ưu tiên" 
+              parent="menu_task_dashboard" 
+              action="action_task_dashboard_by_priority" 
+              sequence="3"/>
+
+    <menuitem id="menu_dashboard_by_partner" 
+              name="Theo khách hàng" 
+              parent="menu_task_dashboard" 
+              action="action_task_dashboard_by_partner" 
+              sequence="4"/>
+
+    <menuitem id="menu_dashboard_analysis" 
+              name="Phân tích tổng hợp" 
+              parent="menu_task_dashboard" 
+              action="action_task_dashboard_analysis" 
+              sequence="5"/>
+</odoo>

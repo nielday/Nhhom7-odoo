@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phong Asia - Behind Your Success</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-asia"></i>
+                <span>Phong Asia</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Trang Chủ</a>
+                <a href="products.html" class="nav-link">Sản Phẩm</a>
+                <a href="about.html" class="nav-link">Giới Thiệu</a>
+                <a href="contact.html" class="nav-link">Liên Hệ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="user-btn" id="userBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Giải Pháp Phần Mềm <span class="highlight">Cho Doanh Nghiệp</span></h1>
+                <p class="hero-subtitle">Phong Asia — Behind Your Success. Chúng tôi cung cấp giải pháp phần mềm toàn
+                    diện,
+                    giúp doanh nghiệp của bạn phát triển vượt trội trong kỷ nguyên số.</p>
+                <div class="hero-buttons">
+                    <a href="products.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Khám Phá Ngay
+                    </a>
+                    <a href="about.html" class="btn btn-outline">
+                        <i class="fas fa-info-circle"></i>
+                        Tìm Hiểu Thêm
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="window-content">
+                        <pre><code><span class="keyword">class</span> <span class="string">PhongAsia</span> {
+  <span class="property">services</span>: [<span class="string">"Web"</span>, <span class="string">"Mobile"</span>, <span class="string">"ERP"</span>],
+  <span class="property">stack</span>: [<span class="string">"Odoo"</span>, <span class="string">"Flutter"</span>, <span class="string">"AI"</span>],
+  <span class="property">motto</span>: <span class="string">"Behind Your Success"</span>,
+  <span class="keyword">deploy</span>() { <span class="boolean">return</span> <span class="string">"🚀"</span> }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Tại Sao Chọn Chúng Tôi?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Bảo Mật Cao</h3>
+                    <p>Tất cả dự án đều được kiểm tra bảo mật kỹ lưỡng trước khi bàn giao.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Mã Nguồn Sạch</h3>
+                    <p>Code được viết theo chuẩn, dễ bảo trì và mở rộng trong tương lai.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Hỗ Trợ 24/7</h3>
+                    <p>Đội ngũ kỹ thuật sẵn sàng hỗ trợ bạn mọi lúc mọi nơi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Cập Nhật Liên Tục</h3>
+                    <p>Dự án được cập nhật thường xuyên với các tính năng mới nhất.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Dự Án Nổi Bật</h2>
+                <a href="products.html" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products will be loaded here -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Đang tải sản phẩm...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">Dự Án Hoàn Thành</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Khách Hàng Hài Lòng</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Đối Tác Chiến Lược</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="99">0</div>
+                    <div class="stat-label">% Đánh Giá Tốt</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Danh Mục Dự Án</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Sẵn Sàng Bắt Đầu Dự Án?</h2>
+                <p>Liên hệ ngay với chúng tôi để được tư vấn miễn phí về giải pháp phù hợp nhất cho doanh nghiệp của
+                    bạn.</p>
+                <a href="contact.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-paper-plane"></i>
+                    Liên Hệ Ngay
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>Phong Asia</span>
+                    </div>
+                    <p>Behind Your Success — Cung cấp giải pháp phần mềm toàn diện cho doanh nghiệp.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Kết</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Dịch Vụ</h4>
+                    <ul>
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Ứng Dụng Mobile</a></li>
+                        <li><a href="#">Phần Mềm Quản Lý</a></li>
+                        <li><a href="#">Tư Vấn CNTT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+                        <li><i class="fas fa-phone"></i> +84 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> contact@phongasia.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Phong Asia. All rights reserved. Behind Your Success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Giỏ Hàng</h3>
+            <button class="close-btn" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Tổng cộng:</span>
+                <span class="total-amount" id="cartTotal">0 ₫</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="checkout()">
+                <i class="fas fa-credit-card"></i>
+                Thanh Toán
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAuthModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3 id="authModalTitle">Đăng Nhập</h3>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="form-group" id="nameGroup" style="display: none;">
+                        <label>Họ và Tên *</label>
+                        <input type="text" id="authName" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group" id="usernameGroup">
+                        <label>Tên đăng nhập *</label>
+                        <input type="text" id="authUsername" placeholder="Nhập tên đăng nhập" required>
+                    </div>
+                    <div class="form-group" id="emailGroup" style="display: none;">
+                        <label>Email</label>
+                        <input type="email" id="authEmail" placeholder="Nhập email">
+                    </div>
+                    <div class="form-group" id="phoneGroup" style="display: none;">
+                        <label>Số điện thoại</label>
+                        <input type="tel" id="authPhone" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group" id="passwordGroup">
+                        <label>Mật khẩu *</label>
+                        <div class="password-input">
+                            <input type="password" id="authPassword" placeholder="Nhập mật khẩu" required>
+                            <button type="button" class="toggle-password"
+                                onclick="togglePasswordVisibility('authPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                        <label>Xác nhận mật khẩu *</label>
+                        <div class="password-input">
+                            <input type="password" id="authConfirmPassword" placeholder="Nhập lại mật khẩu">
+                            <button type="button" class="toggle-password"
+                                onclick="togglePasswordVisibility('authConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span id="authBtnText">Đăng Nhập</span>
+                    </button>
+                </form>
+                <div class="auth-switch">
+                    <span id="authSwitchText">Chưa có tài khoản?</span>
+                    <a href="#" onclick="toggleAuthMode(event)">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal modal-lg">
+            <button class="modal-close" onclick="closeCheckoutModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Xác Nhận Đơn Hàng</h3>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Họ và Tên *</label>
+                            <input type="text" id="checkoutName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="checkoutEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Số điện thoại *</label>
+                            <input type="tel" id="checkoutPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="checkoutAddress">
+                        </div>
+                    </div>
+                    <div class="order-summary">
+                        <h4>Tóm tắt đơn hàng</h4>
+                        <div id="orderSummaryItems"></div>
+                        <div class="order-total">
+                            <span>Tổng cộng:</span>
+                            <span id="orderTotal">0 ₫</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fas fa-check"></i>
+                        Xác Nhận Đặt Hàng
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot-widget.js"></script>
+</body>
+
+</html>

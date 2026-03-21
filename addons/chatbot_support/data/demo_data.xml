@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Chatbot Configuration -->
+        <record id="default_chatbot_config" model="chatbot.config">
+            <field name="name">Default Chatbot Configuration</field>
+            <field name="gemini_api_key">AIzaSyC_tibnWK7POqYOzJbjyZof_iEvcTA_JvY</field>
+            <field name="gemini_model">gemini-2.5-flash</field>
+            <field name="embedding_model">models/text-embedding-004</field>
+            <field name="top_k_results">3</field>
+            <field name="similarity_threshold">0.5</field>
+            <field name="temperature">0.7</field>
+            <field name="max_tokens">1000</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Sample FAQ Knowledge Base -->
+        <record id="kb_faq_1" model="chatbot.knowledge.base">
+            <field name="name">Giờ làm việc của công ty</field>
+            <field name="category">faq</field>
+            <field name="priority">2</field>
+            <field name="keywords">giờ làm việc, thời gian, mở cửa, đóng cửa</field>
+            <field name="content"><![CDATA[
+                <p>Công ty chúng tôi làm việc từ <strong>Thứ 2 đến Thứ 6</strong>, từ <strong>8:00 sáng đến 17:30 chiều</strong>.</p>
+                <p>Nghỉ trưa từ 12:00 đến 13:00.</p>
+                <p>Thứ 7, Chủ nhật và các ngày lễ chúng tôi nghỉ.</p>
+            ]]></field>
+        </record>
+
+        <record id="kb_faq_2" model="chatbot.knowledge.base">
+            <field name="name">Chính sách bảo hành sản phẩm</field>
+            <field name="category">policy</field>
+            <field name="priority">3</field>
+            <field name="keywords">bảo hành, warranty, đổi trả, hoàn tiền</field>
+            <field name="content"><![CDATA[
+                <h3>Chính sách bảo hành</h3>
+                <ul>
+                    <li><strong>Thời gian bảo hành:</strong> 12 tháng kể từ ngày mua</li>
+                    <li><strong>Phạm vi bảo hành:</strong> Lỗi do nhà sản xuất, lỗi kỹ thuật</li>
+                    <li><strong>Không bảo hành:</strong> Lỗi do người dùng, thiên tai, hỏa hoạn</li>
+                    <li><strong>Đổi trả:</strong> Trong vòng 7 ngày nếu sản phẩm lỗi</li>
+                </ul>
+            ]]></field>
+        </record>
+
+        <record id="kb_faq_3" model="chatbot.knowledge.base">
+            <field name="name">Phương thức thanh toán</field>
+            <field name="category">faq</field>
+            <field name="priority">2</field>
+            <field name="keywords">thanh toán, payment, chuyển khoản, tiền mặt, visa, mastercard</field>
+            <field name="content"><![CDATA[
+                <h3>Các phương thức thanh toán được chấp nhận:</h3>
+                <ol>
+                    <li><strong>Tiền mặt:</strong> Thanh toán trực tiếp tại văn phòng</li>
+                    <li><strong>Chuyển khoản ngân hàng:</strong> Vietcombank, Techcombank, ACB</li>
+                    <li><strong>Thẻ tín dụng:</strong> Visa, Mastercard, JCB</li>
+                    <li><strong>Ví điện tử:</strong> MoMo, ZaloPay, VNPay</li>
+                </ol>
+                <p>Tất cả các giao dịch đều được bảo mật và an toàn 100%.</p>
+            ]]></field>
+        </record>
+
+        <record id="kb_faq_4" model="chatbot.knowledge.base">
+            <field name="name">Thời gian giao hàng</field>
+            <field name="category">faq</field>
+            <field name="priority">2</field>
+            <field name="keywords">giao hàng, vận chuyển, ship, delivery</field>
+            <field name="content"><![CDATA[
+                <h3>Thời gian giao hàng:</h3>
+                <ul>
+                    <li><strong>Nội thành TP.HCM:</strong> 1-2 ngày làm việc</li>
+                    <li><strong>Các tỉnh thành khác:</strong> 3-5 ngày làm việc</li>
+                    <li><strong>Vùng sâu, vùng xa:</strong> 5-7 ngày làm việc</li>
+                </ul>
+                <p>Phí vận chuyển: <strong>Miễn phí</strong> cho đơn hàng trên 500.000đ</p>
+            ]]></field>
+        </record>
+
+        <record id="kb_faq_5" model="chatbot.knowledge.base">
+            <field name="name">Liên hệ hỗ trợ khách hàng</field>
+            <field name="category">faq</field>
+            <field name="priority">3</field>
+            <field name="keywords">liên hệ, hotline, email, support, hỗ trợ</field>
+            <field name="content"><![CDATA[
+                <h3>Thông tin liên hệ:</h3>
+                <ul>
+                    <li><strong>Hotline:</strong> 1900 xxxx (8:00 - 22:00 hàng ngày)</li>
+                    <li><strong>Email:</strong> support@company.com</li>
+                    <li><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</li>
+                    <li><strong>Facebook:</strong> fb.com/company</li>
+                    <li><strong>Zalo:</strong> 0123456789</li>
+                </ul>
+            ]]></field>
+        </record>
+
+        <record id="kb_product_1" model="chatbot.knowledge.base">
+            <field name="name">Giới thiệu về dự án Website Thương mại điện tử</field>
+            <field name="category">product</field>
+            <field name="priority">2</field>
+            <field name="keywords">website, ecommerce, thương mại điện tử, bán hàng online</field>
+            <field name="content"><![CDATA[
+                <h3>Website Thương mại điện tử</h3>
+                <p>Giải pháp website bán hàng online hoàn chỉnh với các tính năng:</p>
+                <ul>
+                    <li>Quản lý sản phẩm, danh mục</li>
+                    <li>Giỏ hàng và thanh toán online</li>
+                    <li>Quản lý đơn hàng, khách hàng</li>
+                    <li>Tích hợp vận chuyển và thanh toán</li>
+                    <li>Responsive design, mobile-friendly</li>
+                    <li>SEO tối ưu</li>
+                </ul>
+                <p><strong>Giá:</strong> Từ 15.000.000đ</p>
+            ]]></field>
+        </record>
+
+        <record id="kb_guide_1" model="chatbot.knowledge.base">
+            <field name="name">Hướng dẫn đặt hàng</field>
+            <field name="category">guide</field>
+            <field name="priority">1</field>
+            <field name="keywords">đặt hàng, mua hàng, order, how to buy</field>
+            <field name="content"><![CDATA[
+                <h3>Hướng dẫn đặt hàng:</h3>
+                <ol>
+                    <li>Chọn sản phẩm bạn muốn mua</li>
+                    <li>Nhấn "Thêm vào giỏ hàng"</li>
+                    <li>Kiểm tra giỏ hàng và nhấn "Thanh toán"</li>
+                    <li>Điền thông tin giao hàng</li>
+                    <li>Chọn phương thức thanh toán</li>
+                    <li>Xác nhận đơn hàng</li>
+                    <li>Nhận email xác nhận</li>
+                </ol>
+                <p>Nếu cần hỗ trợ, vui lòng liên hệ hotline: 1900 xxxx</p>
+            ]]></field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,109 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_customer_tree" model="ir.ui.view">
+        <field name="name">khach_hang.customer.tree</field>
+        <field name="model">khach_hang.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="username"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_customer_form" model="ir.ui.view">
+        <field name="name">khach_hang.customer.form</field>
+        <field name="model">khach_hang.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Thông tin cơ bản">
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="address"/>
+                        </group>
+                        <group string="Đăng nhập">
+                            <field name="username"/>
+                            <field name="password_hash" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Đơn Hàng">
+                            <field name="order_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="date_order"/>
+                                    <field name="total_amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Phản Hồi">
+                            <field name="feedback_ids">
+                                <tree>
+                                    <field name="question"/>
+                                    <field name="supporter"/>
+                                    <field name="answer"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Hoạt Động Chăm Sóc">
+                            <field name="care_activity_ids">
+                                <tree>
+                                    <field name="care_date"/>
+                                    <field name="care_staff"/>
+                                    <field name="contact_method"/>
+                                    <field name="notes"/> <!-- Thay feedback bằng notes -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Lịch Sử Chăm Sóc">
+                            <field name="care_activity_ids">
+                                <tree>
+                                    <field name="care_date"/>
+                                    <field name="care_staff"/>
+                                    <field name="contact_method"/>
+                                    <field name="notes"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_customer_graph" model="ir.ui.view">
+        <field name="name">khach_hang.customer.graph</field>
+        <field name="model">khach_hang.customer</field>
+        <field name="arch" type="xml">
+            <graph string="Số Đơn Hàng Theo Khách Hàng" type="bar">
+                <field name="name" type="row"/>
+                <field name="order_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Actions and Menu -->
+    <record id="action_customer_list" model="ir.actions.act_window">
+        <field name="name">Khách Hàng</field>
+        <field name="res_model">khach_hang.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_customer_graph" model="ir.actions.act_window">
+        <field name="name">Biểu Đồ Số Đơn Hàng</field>
+        <field name="res_model">khach_hang.customer</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_customer_graph"/>
+    </record>
+
+    <menuitem id="menu_customer_root" name="Quản Lý Khách Hàng" sequence="10"/>
+    <menuitem id="menu_customer_list" name="Khách Hàng" parent="menu_customer_root" action="action_customer_list" sequence="10"/>
+    <menuitem id="menu_customer_graph" name="Biểu Đồ Đơn Hàng" parent="menu_customer_root" action="action_customer_graph" sequence="20"/>
+</odoo>

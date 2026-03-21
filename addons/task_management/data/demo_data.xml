@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tasks for Task Management -->
+    
+    <!-- Tasks cho Order 001 - Ecommerce Fashion -->
+    <record id="task_001" model="task.management.task">
+        <field name="name">Triển khai Website Thương Mại Điện Tử cho FashionHub</field>
+        <field name="description"><![CDATA[
+            <p><strong>Mô tả:</strong> Cài đặt và cấu hình website thương mại điện tử cho khách hàng FashionHub</p>
+            <ul>
+                <li>Setup server và database</li>
+                <li>Cấu hình domain và SSL</li>
+                <li>Import dữ liệu sản phẩm</li>
+                <li>Test thanh toán online</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_ecommerce_fashion"/>
+        <field name="order_id" ref="customer_management.order_001"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">done</field>
+        <field name="progress">100</field>
+    </record>
+    
+    <!-- Tasks cho Order 002 - Restaurant Chain -->
+    <record id="task_002" model="task.management.task">
+        <field name="name">Phát triển Website Nhà Hàng Hương Việt</field>
+        <field name="description"><![CDATA[
+            <p><strong>Yêu cầu:</strong> Xây dựng website với tính năng đặt bàn online</p>
+            <ul>
+                <li>Thiết kế giao diện theo brand nhà hàng</li>
+                <li>Tích hợp hệ thống đặt bàn</li>
+                <li>Quản lý menu và giá</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_restaurant_chain"/>
+        <field name="order_id" ref="customer_management.order_002"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=12)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">done</field>
+        <field name="progress">100</field>
+    </record>
+    
+    <record id="task_003" model="task.management.task">
+        <field name="name">Cài đặt Hệ Thống POS cho Hương Việt</field>
+        <field name="description"><![CDATA[
+            <p><strong>Công việc:</strong> Triển khai phần mềm POS tại 3 chi nhánh</p>
+            <ul>
+                <li>Cài đặt phần mềm trên máy tính</li>
+                <li>Kết nối máy in hóa đơn</li>
+                <li>Đào tạo nhân viên sử dụng</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_restaurant_chain"/>
+        <field name="order_id" ref="customer_management.order_002"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        <field name="priority">1</field>
+        <field name="state">in_progress</field>
+        <field name="progress">75</field>
+    </record>
+    
+    <!-- Tasks cho Order 003 - Real Estate Portal -->
+    <record id="task_004" model="task.management.task">
+        <field name="name">Phát triển Portal Bất Động Sản Vina Land</field>
+        <field name="description"><![CDATA[
+            <p><strong>Dự án lớn:</strong> Xây dựng nền tảng BDS hoàn chỉnh</p>
+            <ul>
+                <li>Thiết kế database cho hàng nghìn BĐS</li>
+                <li>Tích hợp Google Maps API</li>
+                <li>Xây dựng tìm kiếm nâng cao</li>
+                <li>Hệ thống đăng tin và quản lý</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_real_estate_company"/>
+        <field name="order_id" ref="customer_management.order_003"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="priority">3</field>
+        <field name="state">in_progress</field>
+        <field name="progress">60</field>
+    </record>
+    
+    <!-- Tasks cho Order 004 - Learning Platform -->
+    <record id="task_005" model="task.management.task">
+        <field name="name">Xây dựng Nền Tảng Học Online Edu Pro</field>
+        <field name="description"><![CDATA[
+            <p><strong>LMS System:</strong> Hệ thống quản lý học tập đầy đủ</p>
+            <ul>
+                <li>Module quản lý khóa học</li>
+                <li>Video streaming và bài giảng</li>
+                <li>Hệ thống bài tập và thi online</li>
+                <li>Báo cáo tiến độ học viên</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_education_center"/>
+        <field name="order_id" ref="customer_management.order_004"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=8)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=7)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">in_progress</field>
+        <field name="progress">45</field>
+    </record>
+    
+    <!-- Tasks cho Order 005 - Fitness App -->
+    <record id="task_006" model="task.management.task">
+        <field name="name">Phát triển App Tập Luyện Fitness Pro</field>
+        <field name="description"><![CDATA[
+            <p><strong>Mobile App:</strong> Ứng dụng tập gym cho iOS và Android</p>
+            <ul>
+                <li>Thiết kế UI/UX theo brand gym</li>
+                <li>Tích hợp video bài tập</li>
+                <li>Theo dõi tiến độ và calo</li>
+                <li>Push notification nhắc nhở</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_fitness_gym"/>
+        <field name="order_id" ref="customer_management.order_005"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=6)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">in_progress</field>
+        <field name="progress">35</field>
+    </record>
+    
+    <!-- Tasks cho Order 006 - Hotel Booking -->
+    <record id="task_007" model="task.management.task">
+        <field name="name">Triển khai Hệ Thống Đặt Phòng Golden Hotel</field>
+        <field name="description"><![CDATA[
+            <p><strong>Booking System:</strong> Website đặt phòng khách sạn</p>
+            <ul>
+                <li>Quản lý phòng và giá theo mùa</li>
+                <li>Lịch đặt phòng realtime</li>
+                <li>Tích hợp thanh toán online</li>
+                <li>Email xác nhận tự động</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_hotel_group"/>
+        <field name="order_id" ref="customer_management.order_006"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=12)).strftime('%Y-%m-%d')"/>
+        <field name="priority">1</field>
+        <field name="state">in_progress</field>
+        <field name="progress">25</field>
+    </record>
+    
+    <!-- Tasks cho Order 007 - Food Delivery App -->
+    <record id="task_008" model="task.management.task">
+        <field name="name">Phân tích yêu cầu App Giao Đồ Ăn</field>
+        <field name="description"><![CDATA[
+            <p><strong>Giai đoạn 1:</strong> Thu thập và phân tích yêu cầu</p>
+            <ul>
+                <li>Họp với khách hàng</li>
+                <li>Vẽ wireframe và mockup</li>
+                <li>Lập kế hoạch phát triển</li>
+                <li>Ước tính thời gian và nguồn lực</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_startup_tech"/>
+        <field name="order_id" ref="customer_management.order_007"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=3)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">in_progress</field>
+        <field name="progress">50</field>
+    </record>
+    
+    <!-- Tasks cho Order 008 - Inventory ERP + POS -->
+    <record id="task_009" model="task.management.task">
+        <field name="name">Cài đặt ERP Quản Lý Kho cho MiniMart</field>
+        <field name="description"><![CDATA[
+            <p><strong>ERP System:</strong> Hệ thống quản lý kho hàng</p>
+            <ul>
+                <li>Cấu hình kho và vị trí</li>
+                <li>Import danh sách sản phẩm</li>
+                <li>Thiết lập quy trình nhập xuất</li>
+                <li>Báo cáo tồn kho</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_retail_store"/>
+        <field name="order_id" ref="customer_management.order_008"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=14)).strftime('%Y-%m-%d')"/>
+        <field name="priority">1</field>
+        <field name="state">todo</field>
+        <field name="progress">0</field>
+    </record>
+    
+    <record id="task_010" model="task.management.task">
+        <field name="name">Tích hợp POS với ERP cho MiniMart</field>
+        <field name="description"><![CDATA[
+            <p><strong>Integration:</strong> Kết nối POS và ERP</p>
+            <ul>
+                <li>Đồng bộ tồn kho realtime</li>
+                <li>Tự động trừ kho khi bán</li>
+                <li>Báo cáo doanh thu tổng hợp</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_retail_store"/>
+        <field name="order_id" ref="customer_management.order_008"/>
+        <field name="start_date" eval="(DateTime.now() + timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=18)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">todo</field>
+        <field name="progress">0</field>
+    </record>
+    
+    <!-- Tasks cho Order 009 - Appointment Booking -->
+    <record id="task_011" model="task.management.task">
+        <field name="name">Triển khai Hệ Thống Đặt Lịch cho Beauty Queen</field>
+        <field name="description"><![CDATA[
+            <p><strong>Booking System:</strong> Đặt lịch spa/salon</p>
+            <ul>
+                <li>Quản lý lịch nhân viên</li>
+                <li>Đặt lịch online cho khách</li>
+                <li>SMS/Email nhắc nhở</li>
+                <li>Quản lý dịch vụ và giá</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_spa_salon"/>
+        <field name="order_id" ref="customer_management.order_009"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=8)).strftime('%Y-%m-%d')"/>
+        <field name="priority">1</field>
+        <field name="state">todo</field>
+        <field name="progress">0</field>
+    </record>
+    
+    <!-- Tasks cho Order 010 - Accounting Software -->
+    <record id="task_012" model="task.management.task">
+        <field name="name">Bàn giao Phần Mềm Kế Toán cho ACC Solutions</field>
+        <field name="description"><![CDATA[
+            <p><strong>Hoàn thành:</strong> Bàn giao và đào tạo</p>
+            <ul>
+                <li>Cài đặt tại văn phòng khách hàng</li>
+                <li>Import dữ liệu kế toán</li>
+                <li>Đào tạo kế toán viên</li>
+                <li>Hỗ trợ chạy thử 1 tháng</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_accounting_firm"/>
+        <field name="order_id" ref="customer_management.order_010"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=20)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">done</field>
+        <field name="progress">100</field>
+    </record>
+    
+    <!-- Tasks cho Order 011 - CRM + Task Management -->
+    <record id="task_013" model="task.management.task">
+        <field name="name">Triển khai CRM System cho Tech Startup</field>
+        <field name="description"><![CDATA[
+            <p><strong>CRM:</strong> Hệ thống quản lý khách hàng</p>
+            <ul>
+                <li>Import danh sách khách hàng</li>
+                <li>Cấu hình pipeline bán hàng</li>
+                <li>Tích hợp email marketing</li>
+                <li>Báo cáo và dashboard</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_startup_tech"/>
+        <field name="order_id" ref="customer_management.order_011"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=7)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=3)).strftime('%Y-%m-%d')"/>
+        <field name="priority">2</field>
+        <field name="state">in_progress</field>
+        <field name="progress">70</field>
+    </record>
+    
+    <record id="task_014" model="task.management.task">
+        <field name="name">Cài đặt App Quản Lý Task cho Tech Startup</field>
+        <field name="description"><![CDATA[
+            <p><strong>Task Manager:</strong> Ứng dụng quản lý công việc team</p>
+            <ul>
+                <li>Tạo workspace và projects</li>
+                <li>Mời thành viên team</li>
+                <li>Cấu hình workflow</li>
+                <li>Tích hợp notification</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_startup_tech"/>
+        <field name="order_id" ref="customer_management.order_011"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="priority">1</field>
+        <field name="state">in_progress</field>
+        <field name="progress">40</field>
+    </record>
+    
+    <!-- Tasks cho Order 013 - Social Network -->
+    <record id="task_015" model="task.management.task">
+        <field name="name">Phát triển Mạng Xã Hội Mini cho Tech Startup</field>
+        <field name="description"><![CDATA[
+            <p><strong>Dự án lớn:</strong> Xây dựng mạng xã hội từ đầu</p>
+            <ul>
+                <li>Thiết kế database phức tạp</li>
+                <li>Newsfeed algorithm</li>
+                <li>Chat realtime với Socket.io</li>
+                <li>Hệ thống nhóm và sự kiện</li>
+                <li>Notification realtime</li>
+                <li>Upload và xử lý media</li>
+            </ul>
+        ]]></field>
+        <field name="partner_id" ref="customer_management.customer_startup_tech"/>
+        <field name="order_id" ref="customer_management.order_013"/>
+        <field name="start_date" eval="(DateTime.now() - timedelta(days=4)).strftime('%Y-%m-%d')"/>
+        <field name="deadline" eval="(DateTime.now() + timedelta(days=20)).strftime('%Y-%m-%d')"/>
+        <field name="priority">3</field>
+        <field name="state">in_progress</field>
+        <field name="progress">20</field>
+    </record>
+
+</odoo>

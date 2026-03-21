@@ -1,0 +1,74 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_potential_customer_tree" model="ir.ui.view">
+        <field name="name">khach_hang.potential_customer.tree</field>
+        <field name="model">khach_hang.potential_customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="product_type"/>
+                <field name="source"/>
+                <field name="interest_level"/>
+                <field name="contact_date"/>
+                <field name="potential_value"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_potential_customer_form" model="ir.ui.view">
+        <field name="name">khach_hang.potential_customer.form</field>
+        <field name="model">khach_hang.potential_customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_convert_to_customer" string="Chuyển Thành Khách Hàng" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_type"/>
+                        <field name="source"/>
+                        <field name="interest_level"/>
+                        <field name="contact_date"/>
+                        <field name="contact_info"/>
+                        <field name="potential_value"/>
+                        <field name="notes" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View để phân loại -->
+    <record id="view_potential_customer_search" model="ir.ui.view">
+        <field name="name">khach_hang.potential_customer.search</field>
+        <field name="model">khach_hang.potential_customer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="contact_info"/>
+                <filter string="Nguồn: Quảng Cáo" name="source_advertising" domain="[('source', '=', 'advertising')]"/>
+                <filter string="Nguồn: Giới Thiệu" name="source_referral" domain="[('source', '=', 'referral')]"/>
+                <filter string="Nguồn: Tự Tìm Kiếm" name="source_self_search" domain="[('source', '=', 'self_search')]"/>
+                <filter string="Quan Tâm Cao" name="high_interest" domain="[('interest_level', '=', 'high')]"/>
+                <filter string="Quan Tâm Trung Bình" name="medium_interest" domain="[('interest_level', '=', 'medium')]"/>
+                <filter string="Quan Tâm Thấp" name="low_interest" domain="[('interest_level', '=', 'low')]"/>
+                <group expand="1" string="Nhóm Theo">
+                    <filter string="Nguồn" name="group_by_source" context="{'group_by': 'source'}"/>
+                    <filter string="Mức Độ Quan Tâm" name="group_by_interest" context="{'group_by': 'interest_level'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action and Menu -->
+    <record id="action_potential_customer_list" model="ir.actions.act_window">
+        <field name="name">Khách Hàng Tiềm Năng</field>
+        <field name="res_model">khach_hang.potential_customer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_potential_customer_search"/>
+    </record>
+
+    <menuitem id="menu_potential_customer_list" name="Khách Hàng Tiềm Năng" parent="menu_customer_root" action="action_potential_customer_list" sequence="60"/>
+</odoo>

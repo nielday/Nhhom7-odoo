@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Categories - Loại dự án -->
+    <record id="category_website" model="khach_hang.product.category">
+        <field name="name">Website</field>
+        <field name="description">Các dự án website hoàn chỉnh</field>
+    </record>
+    
+    <record id="category_mobile_app" model="khach_hang.product.category">
+        <field name="name">Mobile App</field>
+        <field name="description">Ứng dụng di động iOS/Android</field>
+    </record>
+    
+    <record id="category_ecommerce" model="khach_hang.product.category">
+        <field name="name">E-Commerce</field>
+        <field name="description">Hệ thống thương mại điện tử</field>
+    </record>
+    
+    <record id="category_erp" model="khach_hang.product.category">
+        <field name="name">ERP</field>
+        <field name="description">Hệ thống quản lý doanh nghiệp</field>
+    </record>
+    
+    <record id="category_crm" model="khach_hang.product.category">
+        <field name="name">CRM</field>
+        <field name="description">Hệ thống quản lý khách hàng</field>
+    </record>
+
+    <!-- Products - Các dự án lập trình -->
+    <record id="product_ecommerce_fashion" model="khach_hang.product">
+        <field name="name">Website Thương Mại Điện Tử - Thời Trang</field>
+        <field name="price">15000000</field>
+        <field name="description">Website bán hàng thời trang hoàn chỉnh với giỏ hàng, thanh toán online, quản lý đơn hàng. Tech stack: React, Node.js, MongoDB</field>
+        <field name="category_id" ref="category_ecommerce"/>
+        <field name="stock_quantity">5</field>
+        <field name="stock_alert_threshold">2</field>
+    </record>
+    
+    <record id="product_restaurant_website" model="khach_hang.product">
+        <field name="name">Website Nhà Hàng - Đặt Bàn Online</field>
+        <field name="price">8000000</field>
+        <field name="description">Website nhà hàng với tính năng đặt bàn, xem menu, đánh giá. Tech stack: Vue.js, Laravel, MySQL</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">8</field>
+        <field name="stock_alert_threshold">3</field>
+    </record>
+    
+    <record id="product_real_estate_portal" model="khach_hang.product">
+        <field name="name">Portal Bất Động Sản</field>
+        <field name="price">20000000</field>
+        <field name="description">Nền tảng mua bán, cho thuê bất động sản với tìm kiếm nâng cao, bản đồ. Tech stack: Next.js, Django, PostgreSQL</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">3</field>
+        <field name="stock_alert_threshold">1</field>
+    </record>
+    
+    <record id="product_food_delivery_app" model="khach_hang.product">
+        <field name="name">App Giao Đồ Ăn (iOS + Android)</field>
+        <field name="price">35000000</field>
+        <field name="description">Ứng dụng giao đồ ăn hoàn chỉnh cho khách hàng, nhà hàng và shipper. Tech stack: React Native, Node.js, Firebase</field>
+        <field name="category_id" ref="category_mobile_app"/>
+        <field name="stock_quantity">2</field>
+        <field name="stock_alert_threshold">1</field>
+    </record>
+    
+    <record id="product_fitness_app" model="khach_hang.product">
+        <field name="name">App Tập Luyện Thể Hình</field>
+        <field name="price">12000000</field>
+        <field name="description">Ứng dụng tập gym với video hướng dẫn, theo dõi tiến độ, lịch tập. Tech stack: Flutter, Firebase</field>
+        <field name="category_id" ref="category_mobile_app"/>
+        <field name="stock_quantity">6</field>
+        <field name="stock_alert_threshold">2</field>
+    </record>
+    
+    <record id="product_learning_platform" model="khach_hang.product">
+        <field name="name">Nền Tảng Học Online (LMS)</field>
+        <field name="price">25000000</field>
+        <field name="description">Hệ thống quản lý học tập với video bài giảng, bài tập, thi online. Tech stack: React, Node.js, MongoDB, AWS</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">4</field>
+        <field name="stock_alert_threshold">2</field>
+    </record>
+    
+    <record id="product_crm_system" model="khach_hang.product">
+        <field name="name">Hệ Thống CRM Quản Lý Khách Hàng</field>
+        <field name="price">18000000</field>
+        <field name="description">CRM đầy đủ tính năng: quản lý lead, cơ hội, báo cáo, tích hợp email. Tech stack: Angular, .NET Core, SQL Server</field>
+        <field name="category_id" ref="category_crm"/>
+        <field name="stock_quantity">7</field>
+        <field name="stock_alert_threshold">3</field>
+    </record>
+    
+    <record id="product_inventory_erp" model="khach_hang.product">
+        <field name="name">ERP Quản Lý Kho Hàng</field>
+        <field name="price">22000000</field>
+        <field name="description">Hệ thống ERP quản lý kho, nhập xuất, báo cáo tồn kho. Tech stack: Vue.js, Python Django, PostgreSQL</field>
+        <field name="category_id" ref="category_erp"/>
+        <field name="stock_quantity">5</field>
+        <field name="stock_alert_threshold">2</field>
+    </record>
+    
+    <record id="product_hotel_booking" model="khach_hang.product">
+        <field name="name">Website Đặt Phòng Khách Sạn</field>
+        <field name="price">16000000</field>
+        <field name="description">Hệ thống đặt phòng khách sạn với lịch phòng, thanh toán, quản lý booking. Tech stack: React, Node.js, MySQL</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">6</field>
+        <field name="stock_alert_threshold">2</field>
+    </record>
+    
+    <record id="product_social_network" model="khach_hang.product">
+        <field name="name">Mạng Xã Hội Mini</field>
+        <field name="price">30000000</field>
+        <field name="description">Mạng xã hội với newsfeed, chat realtime, nhóm, sự kiện. Tech stack: React, Node.js, Socket.io, MongoDB</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">2</field>
+        <field name="stock_alert_threshold">1</field>
+    </record>
+    
+    <record id="product_pos_system" model="khach_hang.product">
+        <field name="name">Hệ Thống POS Bán Hàng</field>
+        <field name="price">14000000</field>
+        <field name="description">Phần mềm quản lý bán hàng tại quầy với in hóa đơn, quản lý kho. Tech stack: Electron, React, SQLite</field>
+        <field name="category_id" ref="category_erp"/>
+        <field name="stock_quantity">10</field>
+        <field name="stock_alert_threshold">4</field>
+    </record>
+    
+    <record id="product_task_management" model="khach_hang.product">
+        <field name="name">App Quản Lý Công Việc (Task Manager)</field>
+        <field name="price">9000000</field>
+        <field name="description">Ứng dụng quản lý task, dự án, team collaboration. Tech stack: React Native, Firebase</field>
+        <field name="category_id" ref="category_mobile_app"/>
+        <field name="stock_quantity">8</field>
+        <field name="stock_alert_threshold">3</field>
+    </record>
+    
+    <record id="product_blog_cms" model="khach_hang.product">
+        <field name="name">CMS Quản Lý Blog/Tin Tức</field>
+        <field name="price">7000000</field>
+        <field name="description">Hệ thống quản lý nội dung blog với editor WYSIWYG, SEO. Tech stack: Next.js, Strapi, PostgreSQL</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">12</field>
+        <field name="stock_alert_threshold">5</field>
+    </record>
+    
+    <record id="product_appointment_booking" model="khach_hang.product">
+        <field name="name">Hệ Thống Đặt Lịch Hẹn</field>
+        <field name="price">10000000</field>
+        <field name="description">Phần mềm đặt lịch hẹn cho spa, phòng khám, salon. Tech stack: Vue.js, Laravel, MySQL</field>
+        <field name="category_id" ref="category_website"/>
+        <field name="stock_quantity">9</field>
+        <field name="stock_alert_threshold">3</field>
+    </record>
+    
+    <record id="product_accounting_software" model="khach_hang.product">
+        <field name="name">Phần Mềm Kế Toán Doanh Nghiệp</field>
+        <field name="price">28000000</field>
+        <field name="description">Phần mềm kế toán đầy đủ: sổ sách, báo cáo tài chính, thuế. Tech stack: Angular, Java Spring Boot, Oracle</field>
+        <field name="category_id" ref="category_erp"/>
+        <field name="stock_quantity">3</field>
+        <field name="stock_alert_threshold">1</field>
+    </record>
+
+    <!-- Customers - Khách hàng mua dự án -->
+    <record id="customer_startup_tech" model="khach_hang.customer">
+        <field name="name">Công Ty TNHH Tech Startup</field>
+        <field name="email">contact@techstartup.vn</field>
+        <field name="phone">0901234567</field>
+        <field name="address">123 Đường Lê Lợi, Quận 1, TP.HCM</field>
+        <field name="username">techstartup</field>
+    </record>
+    
+    <record id="customer_restaurant_chain" model="khach_hang.customer">
+        <field name="name">Chuỗi Nhà Hàng Hương Việt</field>
+        <field name="email">info@huongviet.com</field>
+        <field name="phone">0912345678</field>
+        <field name="address">456 Đường Nguyễn Huệ, Quận 1, TP.HCM</field>
+        <field name="username">huongviet</field>
+    </record>
+    
+    <record id="customer_real_estate_company" model="khach_hang.customer">
+        <field name="name">Công Ty Bất Động Sản Vina Land</field>
+        <field name="email">sales@vinaland.vn</field>
+        <field name="phone">0923456789</field>
+        <field name="address">789 Đường Trần Hưng Đạo, Quận 5, TP.HCM</field>
+        <field name="username">vinaland</field>
+    </record>
+    
+    <record id="customer_education_center" model="khach_hang.customer">
+        <field name="name">Trung Tâm Đào Tạo Edu Pro</field>
+        <field name="email">admin@edupro.edu.vn</field>
+        <field name="phone">0934567890</field>
+        <field name="address">321 Đường Võ Văn Tần, Quận 3, TP.HCM</field>
+        <field name="username">edupro</field>
+    </record>
+    
+    <record id="customer_fitness_gym" model="khach_hang.customer">
+        <field name="name">Phòng Gym Fitness Pro</field>
+        <field name="email">contact@fitnesspro.vn</field>
+        <field name="phone">0945678901</field>
+        <field name="address">654 Đường Cách Mạng Tháng 8, Quận 10, TP.HCM</field>
+        <field name="username">fitnesspro</field>
+    </record>
+    
+    <record id="customer_hotel_group" model="khach_hang.customer">
+        <field name="name">Tập Đoàn Khách Sạn Golden</field>
+        <field name="email">booking@goldenhotel.vn</field>
+        <field name="phone">0956789012</field>
+        <field name="address">987 Đường Lý Thường Kiệt, Quận 11, TP.HCM</field>
+        <field name="username">goldenhotel</field>
+    </record>
+    
+    <record id="customer_retail_store" model="khach_hang.customer">
+        <field name="name">Cửa Hàng Bán Lẻ MiniMart</field>
+        <field name="email">manager@minimart.vn</field>
+        <field name="phone">0967890123</field>
+        <field name="address">147 Đường Hai Bà Trưng, Quận 3, TP.HCM</field>
+        <field name="username">minimart</field>
+    </record>
+    
+    <record id="customer_spa_salon" model="khach_hang.customer">
+        <field name="name">Spa &amp; Salon Beauty Queen</field>
+        <field name="email">info@beautyqueen.vn</field>
+        <field name="phone">0978901234</field>
+        <field name="address">258 Đường Điện Biên Phủ, Quận Bình Thạnh, TP.HCM</field>
+        <field name="username">beautyqueen</field>
+    </record>
+    
+    <record id="customer_accounting_firm" model="khach_hang.customer">
+        <field name="name">Công Ty Kế Toán ACC Solutions</field>
+        <field name="email">contact@accsolutions.vn</field>
+        <field name="phone">0989012345</field>
+        <field name="address">369 Đường Xô Viết Nghệ Tĩnh, Quận Bình Thạnh, TP.HCM</field>
+        <field name="username">accsolutions</field>
+    </record>
+    
+    <record id="customer_ecommerce_fashion" model="khach_hang.customer">
+        <field name="name">Shop Thời Trang Online FashionHub</field>
+        <field name="email">support@fashionhub.vn</field>
+        <field name="phone">0990123456</field>
+        <field name="address">741 Đường Phan Văn Trị, Quận Gò Vấp, TP.HCM</field>
+        <field name="username">fashionhub</field>
+    </record>
+
+    <!-- Orders - Đơn hàng mua dự án -->
+    <record id="order_001" model="khach_hang.order">
+        <field name="name">ORD001</field>
+        <field name="customer_id" ref="customer_ecommerce_fashion"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_ecommerce_fashion')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=15)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="state">done</field>
+    </record>
+    
+    <record id="order_002" model="khach_hang.order">
+        <field name="name">ORD002</field>
+        <field name="customer_id" ref="customer_restaurant_chain"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_restaurant_website'), ref('product_pos_system')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=12)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        <field name="state">done</field>
+    </record>
+    
+    <record id="order_003" model="khach_hang.order">
+        <field name="name">ORD003</field>
+        <field name="customer_id" ref="customer_real_estate_company"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_real_estate_portal')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="state">shipping</field>
+    </record>
+    
+    <record id="order_004" model="khach_hang.order">
+        <field name="name">ORD004</field>
+        <field name="customer_id" ref="customer_education_center"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_learning_platform')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=8)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=7)).strftime('%Y-%m-%d')"/>
+        <field name="state">confirmed</field>
+    </record>
+    
+    <record id="order_005" model="khach_hang.order">
+        <field name="name">ORD005</field>
+        <field name="customer_id" ref="customer_fitness_gym"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_fitness_app')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=6)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="state">confirmed</field>
+    </record>
+    
+    <record id="order_006" model="khach_hang.order">
+        <field name="name">ORD006</field>
+        <field name="customer_id" ref="customer_hotel_group"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_hotel_booking')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=12)).strftime('%Y-%m-%d')"/>
+        <field name="state">confirmed</field>
+    </record>
+    
+    <record id="order_007" model="khach_hang.order">
+        <field name="name">ORD007</field>
+        <field name="customer_id" ref="customer_startup_tech"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_food_delivery_app')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=3)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        <field name="state">draft</field>
+    </record>
+    
+    <record id="order_008" model="khach_hang.order">
+        <field name="name">ORD008</field>
+        <field name="customer_id" ref="customer_retail_store"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_inventory_erp'), ref('product_pos_system')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=14)).strftime('%Y-%m-%d')"/>
+        <field name="state">draft</field>
+    </record>
+    
+    <record id="order_009" model="khach_hang.order">
+        <field name="name">ORD009</field>
+        <field name="customer_id" ref="customer_spa_salon"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_appointment_booking')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=8)).strftime('%Y-%m-%d')"/>
+        <field name="state">draft</field>
+    </record>
+    
+    <record id="order_010" model="khach_hang.order">
+        <field name="name">ORD010</field>
+        <field name="customer_id" ref="customer_accounting_firm"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_accounting_software')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=20)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="state">done</field>
+    </record>
+    
+    <record id="order_011" model="khach_hang.order">
+        <field name="name">ORD011</field>
+        <field name="customer_id" ref="customer_startup_tech"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_crm_system'), ref('product_task_management')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=3)).strftime('%Y-%m-%d')"/>
+        <field name="state">shipping</field>
+    </record>
+    
+    <record id="order_012" model="khach_hang.order">
+        <field name="name">ORD012</field>
+        <field name="customer_id" ref="customer_education_center"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_blog_cms')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=18)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() - timedelta(days=8)).strftime('%Y-%m-%d')"/>
+        <field name="state">done</field>
+    </record>
+    
+    <record id="order_013" model="khach_hang.order">
+        <field name="name">ORD013</field>
+        <field name="customer_id" ref="customer_startup_tech"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_social_network')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=4)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=20)).strftime('%Y-%m-%d')"/>
+        <field name="state">confirmed</field>
+    </record>
+    
+    <record id="order_014" model="khach_hang.order">
+        <field name="name">ORD014</field>
+        <field name="customer_id" ref="customer_restaurant_chain"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_food_delivery_app')])]"/>
+        <field name="date_order" eval="(DateTime.now() - timedelta(days=25)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        <field name="state">cancel</field>
+    </record>
+    
+    <record id="order_015" model="khach_hang.order">
+        <field name="name">ORD015</field>
+        <field name="customer_id" ref="customer_hotel_group"/>
+        <field name="product_ids" eval="[(6, 0, [ref('product_crm_system')])]"/>
+        <field name="date_order" eval="DateTime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="delivery_date" eval="(DateTime.now() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="state">draft</field>
+    </record>
+
+</odoo>

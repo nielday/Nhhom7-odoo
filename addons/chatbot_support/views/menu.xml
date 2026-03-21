@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_chatbot_root" 
+              name="AI Chatbot" 
+              sequence="10"
+              web_icon="chatbot_support,static/description/icon.png"/>
+
+    <!-- Knowledge Base Menu -->
+    <menuitem id="menu_knowledge_base" 
+              name="Knowledge Base" 
+              parent="menu_chatbot_root" 
+              action="action_knowledge_base" 
+              sequence="10"/>
+
+    <!-- Conversations Menu -->
+    <menuitem id="menu_conversations" 
+              name="Lịch sử Chat" 
+              parent="menu_chatbot_root" 
+              action="action_conversation" 
+              sequence="20"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_chatbot_config" 
+              name="Cấu hình" 
+              parent="menu_chatbot_root" 
+              action="action_chatbot_config" 
+              sequence="100"
+              groups="base.group_system"/>
+</odoo>

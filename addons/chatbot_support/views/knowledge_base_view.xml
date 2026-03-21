@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Knowledge Base Tree View -->
+    <record id="view_knowledge_base_tree" model="ir.ui.view">
+        <field name="name">chatbot.knowledge.base.tree</field>
+        <field name="model">chatbot.knowledge.base</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="not active" decoration-info="category == 'faq'" 
+                  decoration-success="category == 'product'">
+                <field name="name"/>
+                <field name="category"/>
+                <field name="priority" widget="priority"/>
+                <field name="usage_count"/>
+                <field name="last_used"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Knowledge Base Form View -->
+    <record id="view_knowledge_base_form" model="ir.ui.view">
+        <field name="name">chatbot.knowledge.base.form</field>
+        <field name="model">chatbot.knowledge.base</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_embedding" string="Tạo Embedding" type="object" class="btn-primary"/>
+                    <field name="active" widget="boolean_button" options="{'terminology': 'active'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="Tiêu đề tài liệu..."/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="priority" widget="priority"/>
+                            <field name="source_type"/>
+                        </group>
+                        <group>
+                            <field name="keywords" placeholder="từ khóa 1, từ khóa 2, ..."/>
+                            <field name="product_id" attrs="{'invisible': [('source_type', '!=', 'product')]}"/>
+                            <field name="usage_count"/>
+                            <field name="last_used"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Nội dung">
+                            <field name="content" widget="html"/>
+                        </page>
+                        <page string="Plain Text (cho Embedding)">
+                            <field name="content_plain" readonly="1"/>
+                        </page>
+                        <page string="Embedding Info" groups="base.group_no_one">
+                            <group>
+                                <field name="embedding_model"/>
+                                <field name="embedding_vector" widget="text"/>
+                            </group>
+                        </page>
+                        <page string="Import file">
+                            <group>
+                                <group>
+                                    <field name="pdf_file" filename="pdf_filename"/>
+                                    <field name="pdf_filename" invisible="1"/>
+                                </group>
+                            </group>
+                            <div class="mt16">
+                                <button name="action_import_pdf" string="Import PDF" type="object" 
+                                        class="btn-primary" icon="fa-file-pdf-o"
+                                        attrs="{'invisible': [('pdf_file', '=', False)]}"/>
+                                <p class="text-muted mt8">
+                                    <i class="fa fa-info-circle"/> Upload file PDF và nhấn "Import PDF" để tự động trích xuất nội dung.
+                                    <br/>Nội dung sẽ được thêm vào tab "Nội dung".
+                                </p>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Knowledge Base Search View -->
+    <record id="view_knowledge_base_search" model="ir.ui.view">
+        <field name="name">chatbot.knowledge.base.search</field>
+        <field name="model">chatbot.knowledge.base</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="keywords"/>
+                <field name="content_plain"/>
+                <filter string="FAQ" name="faq" domain="[('category', '=', 'faq')]"/>
+                <filter string="Sản phẩm" name="product" domain="[('category', '=', 'product')]"/>
+                <filter string="Chính sách" name="policy" domain="[('category', '=', 'policy')]"/>
+                <filter string="Kích hoạt" name="active" domain="[('active', '=', True)]"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter string="Danh mục" name="group_by_category" context="{'group_by': 'category'}"/>
+                    <filter string="Nguồn" name="group_by_source" context="{'group_by': 'source_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Knowledge Base Action -->
+    <record id="action_knowledge_base" model="ir.actions.act_window">
+        <field name="name">Knowledge Base</field>
+        <field name="res_model">chatbot.knowledge.base</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo tài liệu Knowledge Base đầu tiên!
+            </p>
+            <p>
+                Knowledge Base là nguồn thông tin mà chatbot sẽ sử dụng để trả lời câu hỏi của khách hàng.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Chatbot Config Form View -->
+    <record id="view_chatbot_config_form" model="ir.ui.view">
+        <field name="name">chatbot.config.form</field>
+        <field name="model">chatbot.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="active" widget="boolean_button" options="{'terminology': 'active'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <notebook>
+                        <page string="Groq API">
+                            <group>
+                                <group>
+                                    <field name="groq_api_key" password="True"/>
+                                    <field name="groq_model"/>
+                                </group>
+                                <group>
+                                    <field name="max_tokens"/>
+                                    <field name="temperature"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="RAG Settings">
+                            <group>
+                                <field name="top_k_results"/>
+                                <field name="similarity_threshold"/>
+                            </group>
+                        </page>
+                        <page string="Prompts &amp; Messages">
+                            <group>
+                                <field name="system_prompt" widget="text"/>
+                                <field name="welcome_message" widget="text"/>
+                                <field name="fallback_message" widget="text"/>
+                            </group>
+                        </page>
+                        <page string="Features">
+                            <group>
+                                <field name="enable_conversation_history"/>
+                                <field name="enable_rating"/>
+                                <field name="enable_human_handoff"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Chatbot Config Tree View -->
+    <record id="view_chatbot_config_tree" model="ir.ui.view">
+        <field name="name">chatbot.config.tree</field>
+        <field name="model">chatbot.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="groq_model"/>
+                <field name="top_k_results"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Chatbot Config Action -->
+    <record id="action_chatbot_config" model="ir.actions.act_window">
+        <field name="name">Cấu hình Chatbot</field>
+        <field name="res_model">chatbot.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo cấu hình chatbot
+            </p>
+        </field>
+    </record>
+</odoo>

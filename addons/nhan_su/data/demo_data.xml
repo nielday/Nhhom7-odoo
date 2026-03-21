@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Đơn vị (Departments) -->
+    <record id="don_vi_kinh_doanh" model="don_vi">
+        <field name="ma_don_vi">KD</field>
+        <field name="ten_don_vi">Phòng Kinh Doanh</field>
+    </record>
+    
+    <record id="don_vi_phat_trien" model="don_vi">
+        <field name="ma_don_vi">DEV</field>
+        <field name="ten_don_vi">Phòng Phát Triển Sản Phẩm</field>
+    </record>
+    
+    <record id="don_vi_ho_tro" model="don_vi">
+        <field name="ma_don_vi">SUP</field>
+        <field name="ten_don_vi">Phòng Hỗ Trợ Khách Hàng</field>
+    </record>
+    
+    <record id="don_vi_hanh_chinh" model="don_vi">
+        <field name="ma_don_vi">HC</field>
+        <field name="ten_don_vi">Phòng Hành Chính Nhân Sự</field>
+    </record>
+    
+    <record id="don_vi_marketing" model="don_vi">
+        <field name="ma_don_vi">MKT</field>
+        <field name="ten_don_vi">Phòng Marketing</field>
+    </record>
+
+    <!-- Chức vụ (Positions) -->
+    <record id="chuc_vu_giam_doc" model="chuc_vu">
+        <field name="ma_chuc_vu">GD</field>
+        <field name="ten_chuc_vu">Giám Đốc</field>
+    </record>
+    
+    <record id="chuc_vu_truong_phong" model="chuc_vu">
+        <field name="ma_chuc_vu">TP</field>
+        <field name="ten_chuc_vu">Trưởng Phòng</field>
+    </record>
+    
+    <record id="chuc_vu_pho_phong" model="chuc_vu">
+        <field name="ma_chuc_vu">PP</field>
+        <field name="ten_chuc_vu">Phó Phòng</field>
+    </record>
+    
+    <record id="chuc_vu_nhan_vien" model="chuc_vu">
+        <field name="ma_chuc_vu">NV</field>
+        <field name="ten_chuc_vu">Nhân Viên</field>
+    </record>
+    
+    <record id="chuc_vu_team_lead" model="chuc_vu">
+        <field name="ma_chuc_vu">TL</field>
+        <field name="ten_chuc_vu">Team Leader</field>
+    </record>
+    
+    <record id="chuc_vu_senior_dev" model="chuc_vu">
+        <field name="ma_chuc_vu">SR</field>
+        <field name="ten_chuc_vu">Senior Developer</field>
+    </record>
+    
+    <record id="chuc_vu_junior_dev" model="chuc_vu">
+        <field name="ma_chuc_vu">JR</field>
+        <field name="ten_chuc_vu">Junior Developer</field>
+    </record>
+
+    <!-- Nhân viên (Employees) -->
+    <record id="nhan_vien_001" model="nhan_vien">
+        <field name="ma_dinh_danh">anhnt</field>
+        <field name="ho_ten_dem">Nguyễn Tuấn</field>
+        <field name="ten">Anh</field>
+        <field name="ngay_sinh">1985-03-15</field>
+        <field name="que_quan">Hà Nội</field>
+        <field name="email">anh.nguyen@itproject.vn</field>
+        <field name="so_dien_thoai">0901234567</field>
+    </record>
+    
+    <record id="lich_su_001" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_001"/>
+        <field name="chuc_vu_id" ref="chuc_vu_giam_doc"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_002" model="nhan_vien">
+        <field name="ma_dinh_danh">binhlt</field>
+        <field name="ho_ten_dem">Lê Thị</field>
+        <field name="ten">Bình</field>
+        <field name="ngay_sinh">1990-07-22</field>
+        <field name="que_quan">TP.HCM</field>
+        <field name="email">binh.le@itproject.vn</field>
+        <field name="so_dien_thoai">0912345678</field>
+    </record>
+    
+    <record id="lich_su_002" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_002"/>
+        <field name="chuc_vu_id" ref="chuc_vu_truong_phong"/>
+        <field name="don_vi_id" ref="don_vi_kinh_doanh"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_003" model="nhan_vien">
+        <field name="ma_dinh_danh">cuongpv</field>
+        <field name="ho_ten_dem">Phạm Văn</field>
+        <field name="ten">Cường</field>
+        <field name="ngay_sinh">1992-11-08</field>
+        <field name="que_quan">Đà Nẵng</field>
+        <field name="email">cuong.pham@itproject.vn</field>
+        <field name="so_dien_thoai">0923456789</field>
+    </record>
+    
+    <record id="lich_su_003" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_003"/>
+        <field name="chuc_vu_id" ref="chuc_vu_team_lead"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_004" model="nhan_vien">
+        <field name="ma_dinh_danh">dungth</field>
+        <field name="ho_ten_dem">Trần Hồng</field>
+        <field name="ten">Dung</field>
+        <field name="ngay_sinh">1995-05-18</field>
+        <field name="que_quan">Hải Phòng</field>
+        <field name="email">dung.tran@itproject.vn</field>
+        <field name="so_dien_thoai">0934567890</field>
+    </record>
+    
+    <record id="lich_su_004" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_004"/>
+        <field name="chuc_vu_id" ref="chuc_vu_senior_dev"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_005" model="nhan_vien">
+        <field name="ma_dinh_danh">emvn</field>
+        <field name="ho_ten_dem">Vũ Ngọc</field>
+        <field name="ten">Em</field>
+        <field name="ngay_sinh">1998-09-25</field>
+        <field name="que_quan">Nghệ An</field>
+        <field name="email">em.vu@itproject.vn</field>
+        <field name="so_dien_thoai">0945678901</field>
+    </record>
+    
+    <record id="lich_su_005" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_005"/>
+        <field name="chuc_vu_id" ref="chuc_vu_junior_dev"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_006" model="nhan_vien">
+        <field name="ma_dinh_danh">fhm</field>
+        <field name="ho_ten_dem">Hoàng Minh</field>
+        <field name="ten">Phương</field>
+        <field name="ngay_sinh">1993-12-30</field>
+        <field name="que_quan">Huế</field>
+        <field name="email">phuong.hoang@itproject.vn</field>
+        <field name="so_dien_thoai">0956789012</field>
+    </record>
+    
+    <record id="lich_su_006" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_006"/>
+        <field name="chuc_vu_id" ref="chuc_vu_senior_dev"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_007" model="nhan_vien">
+        <field name="ma_dinh_danh">giangnv</field>
+        <field name="ho_ten_dem">Nguyễn Văn</field>
+        <field name="ten">Giang</field>
+        <field name="ngay_sinh">1996-04-12</field>
+        <field name="que_quan">Quảng Ninh</field>
+        <field name="email">giang.nguyen@itproject.vn</field>
+        <field name="so_dien_thoai">0967890123</field>
+    </record>
+    
+    <record id="lich_su_007" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_007"/>
+        <field name="chuc_vu_id" ref="chuc_vu_nhan_vien"/>
+        <field name="don_vi_id" ref="don_vi_kinh_doanh"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_008" model="nhan_vien">
+        <field name="ma_dinh_danh">hanhtt</field>
+        <field name="ho_ten_dem">Trần Thị</field>
+        <field name="ten">Hạnh</field>
+        <field name="ngay_sinh">1994-08-05</field>
+        <field name="que_quan">Cần Thơ</field>
+        <field name="email">hanh.tran@itproject.vn</field>
+        <field name="so_dien_thoai">0978901234</field>
+    </record>
+    
+    <record id="lich_su_008" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_008"/>
+        <field name="chuc_vu_id" ref="chuc_vu_truong_phong"/>
+        <field name="don_vi_id" ref="don_vi_ho_tro"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_009" model="nhan_vien">
+        <field name="ma_dinh_danh">ienlp</field>
+        <field name="ho_ten_dem">Lê Phương</field>
+        <field name="ten">Uyên</field>
+        <field name="ngay_sinh">1997-02-14</field>
+        <field name="que_quan">Bình Dương</field>
+        <field name="email">uyen.le@itproject.vn</field>
+        <field name="so_dien_thoai">0989012345</field>
+    </record>
+    
+    <record id="lich_su_009" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_009"/>
+        <field name="chuc_vu_id" ref="chuc_vu_nhan_vien"/>
+        <field name="don_vi_id" ref="don_vi_ho_tro"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_010" model="nhan_vien">
+        <field name="ma_dinh_danh">khanhdq</field>
+        <field name="ho_ten_dem">Đỗ Quang</field>
+        <field name="ten">Khánh</field>
+        <field name="ngay_sinh">1991-10-20</field>
+        <field name="que_quan">Thanh Hóa</field>
+        <field name="email">khanh.do@itproject.vn</field>
+        <field name="so_dien_thoai">0990123456</field>
+    </record>
+    
+    <record id="lich_su_010" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_010"/>
+        <field name="chuc_vu_id" ref="chuc_vu_truong_phong"/>
+        <field name="don_vi_id" ref="don_vi_marketing"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_011" model="nhan_vien">
+        <field name="ma_dinh_danh">linhnt</field>
+        <field name="ho_ten_dem">Nguyễn Thị</field>
+        <field name="ten">Linh</field>
+        <field name="ngay_sinh">1999-06-08</field>
+        <field name="que_quan">Vĩnh Phúc</field>
+        <field name="email">linh.nguyen@itproject.vn</field>
+        <field name="so_dien_thoai">0901111111</field>
+    </record>
+    
+    <record id="lich_su_011" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_011"/>
+        <field name="chuc_vu_id" ref="chuc_vu_nhan_vien"/>
+        <field name="don_vi_id" ref="don_vi_marketing"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_012" model="nhan_vien">
+        <field name="ma_dinh_danh">manhpv</field>
+        <field name="ho_ten_dem">Phạm Văn</field>
+        <field name="ten">Mạnh</field>
+        <field name="ngay_sinh">1994-01-28</field>
+        <field name="que_quan">Nam Định</field>
+        <field name="email">manh.pham@itproject.vn</field>
+        <field name="so_dien_thoai">0912222222</field>
+    </record>
+    
+    <record id="lich_su_012" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_012"/>
+        <field name="chuc_vu_id" ref="chuc_vu_senior_dev"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_013" model="nhan_vien">
+        <field name="ma_dinh_danh">namhv</field>
+        <field name="ho_ten_dem">Hoàng Văn</field>
+        <field name="ten">Nam</field>
+        <field name="ngay_sinh">2000-03-17</field>
+        <field name="que_quan">Thái Bình</field>
+        <field name="email">nam.hoang@itproject.vn</field>
+        <field name="so_dien_thoai">0923333333</field>
+    </record>
+    
+    <record id="lich_su_013" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_013"/>
+        <field name="chuc_vu_id" ref="chuc_vu_junior_dev"/>
+        <field name="don_vi_id" ref="don_vi_phat_trien"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_014" model="nhan_vien">
+        <field name="ma_dinh_danh">oanhtk</field>
+        <field name="ho_ten_dem">Trương Kim</field>
+        <field name="ten">Oanh</field>
+        <field name="ngay_sinh">1988-11-11</field>
+        <field name="que_quan">Lào Cai</field>
+        <field name="email">oanh.truong@itproject.vn</field>
+        <field name="so_dien_thoai">0934444444</field>
+    </record>
+    
+    <record id="lich_su_014" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_014"/>
+        <field name="chuc_vu_id" ref="chuc_vu_truong_phong"/>
+        <field name="don_vi_id" ref="don_vi_hanh_chinh"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+    
+    <record id="nhan_vien_015" model="nhan_vien">
+        <field name="ma_dinh_danh">phongdb</field>
+        <field name="ho_ten_dem">Đặng Bảo</field>
+        <field name="ten">Phong</field>
+        <field name="ngay_sinh">1996-07-23</field>
+        <field name="que_quan">Bắc Giang</field>
+        <field name="email">phong.dang@itproject.vn</field>
+        <field name="so_dien_thoai">0945555555</field>
+    </record>
+    
+    <record id="lich_su_015" model="lich_su_cong_tac">
+        <field name="nhan_vien_id" ref="nhan_vien_015"/>
+        <field name="chuc_vu_id" ref="chuc_vu_nhan_vien"/>
+        <field name="don_vi_id" ref="don_vi_hanh_chinh"/>
+        <field name="loai_chuc_vu">Chính</field>
+    </record>
+
+</odoo>

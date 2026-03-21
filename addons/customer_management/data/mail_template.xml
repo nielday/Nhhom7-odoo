@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="mail_template_feedback_response" model="mail.template">
+            <field name="name">Phản Hồi Từ Nhân Viên Hỗ Trợ</field>
+            <field name="model_id" ref="model_khach_hang_feedback"/>  <!-- Thay đổi ở đây -->
+            <field name="email_from">${object.supporter.email_formatted}</field>
+            <field name="email_to">${object.customer_id.email}</field>
+            <field name="subject">Phản Hồi Cho Câu Hỏi Của Bạn</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Xin chào ${object.customer_id.name},</p>
+                <p>Chúng tôi đã nhận được câu hỏi của bạn: <strong>${object.question}</strong></p>
+                <p>Đây là câu trả lời từ nhân viên hỗ trợ ${object.supporter.name}:<br/>
+                ${object.answer}</p>
+                <p>Trân trọng,<br/>Đội ngũ hỗ trợ</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>
