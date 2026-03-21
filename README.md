@@ -335,10 +335,10 @@ Mở trình duyệt và kiểm tra:
 Dự án được phát triển bởi sinh viên Khoa Công Nghệ Thông Tin - Đại học Đại Nam dưới sự hướng dẫn của AIoTLab.
 
 ### Tác giả chính
-- **Vũ Minh Quốc** - Developer
+- **Đào Đức Phong** - Developer
 
 ### Giảng viên hướng dẫn
-- **Lê Tuấn Anh** - Khoa Công Nghệ Thông Tin
+- **Nguyễn Văn Nhân** - Khoa Công Nghệ Thông Tin
 
 ## 📝 12. License
 
