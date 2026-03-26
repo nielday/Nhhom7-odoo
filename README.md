@@ -53,10 +53,10 @@ Module CRM cốt lõi của hệ thống, quản lý toàn bộ quy trình bán 
 - `customer_management.feedback` - Phản hồi
 
 #### 🤖 **Chatbot Support** (Hỗ trợ AI Chatbot)
-Module chatbot thông minh sử dụng Gemini AI và RAG để tư vấn khách hàng tự động.
+Module chatbot thông minh sử dụng Groq API và RAG để tư vấn khách hàng tự động.
 
 **Tính năng:**
-- ✅ Tích hợp Gemini AI (Google) cho câu trả lời tự nhiên
+- ✅ Tích hợp Groq API cho câu trả lời tự nhiên
 - ✅ RAG (Retrieval-Augmented Generation) truy xuất thông tin chính xác
 - ✅ Quản lý Knowledge Base (FAQ, Product Info)
 - ✅ Lưu trữ lịch sử hội thoại (Conversation History)
@@ -70,7 +70,7 @@ Module chatbot thông minh sử dụng Gemini AI và RAG để tư vấn khách 
 - `chatbot_support.chatbot_config` - Cấu hình chatbot
 
 **Công nghệ AI:**
-- Google Gemini API
+- Groq API
 - RAG với vector embeddings
 - Semantic search
 
@@ -120,7 +120,7 @@ Module quản lý công việc và tiến độ dự án, tích hợp với Cust
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
 
 ### AI & Machine Learning
-[![Google Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Groq](https://img.shields.io/badge/Groq-f55036?style=for-the-badge&logo=groq&logoColor=white)](https://console.groq.com/)
 
 ### Database
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
@@ -194,14 +194,14 @@ db_port = 5431
 xmlrpc_port = 8069
 ```
 
-### 4.6. Cấu hình Gemini AI (cho Chatbot)
+### 4.6. Cấu hình Groq API (cho Chatbot)
 
 Tạo file `.env` trong thư mục gốc:
 ```bash
-GEMINI_API_KEY=your_gemini_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
-Lấy API key tại: https://ai.google.dev/
+Lấy API key tại: https://console.groq.com/keys
 
 ### 4.7. Chạy hệ thống
 
@@ -327,7 +327,7 @@ Mở trình duyệt và kiểm tra:
 ## 🎓 10. Tài liệu tham khảo
 
 - [Odoo Documentation](https://www.odoo.com/documentation/16.0/)
-- [Google Gemini API](https://ai.google.dev/docs)
+- [Groq API](https://console.groq.com/docs)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
 ## 👥 11. Đóng góp

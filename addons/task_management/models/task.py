@@ -71,3 +71,20 @@ class TaskManagement(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
         self.progress = 0
+
+    def write(self, vals):
+        res = super().write(vals)
+        if 'state' in vals:
+            TASK_TO_ORDER_STATE = {
+                'todo': 'confirmed',
+                'in_progress': 'shipping',
+                'done': 'done',
+                'cancel': 'cancel'
+            }
+            new_order_state = TASK_TO_ORDER_STATE.get(vals['state'])
+            if new_order_state:
+                for task in self:
+                    if task.order_id and task.order_id.state != new_order_state:
+                        # Update order state to sync back
+                        task.order_id.write({'state': new_order_state})
+        return res

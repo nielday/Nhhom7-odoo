@@ -24,7 +24,7 @@
 
 import { session } from "@web/session";
 import { url } from "@web/core/utils/urls";
-import { useService } from "@web/core/utils/hooks";
+import { useService, useBus } from "@web/core/utils/hooks";
 import { Dropdown } from "@web/core/dropdown/dropdown";
 
 const { Component, hooks } = owl;
@@ -41,7 +41,7 @@ export class AppsMenu extends Dropdown {
     	} else {
     		this.backgroundImageUrl = '/muk_web_theme/static/img/background.png';
     	}
-    	this.env.bus.on("ACTION_MANAGER:UI-UPDATED", this, ev => this.close());
+    	useBus(this.env.bus, "ACTION_MANAGER:UI-UPDATED", ev => this.close());
     }
 }
 
