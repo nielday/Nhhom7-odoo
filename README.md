@@ -142,8 +142,8 @@ Module quản lý công việc và tiến độ dự án, tích hợp với Cust
 ### 4.2. Clone project
 
 ```bash
-git clone https://github.com/rynxu2/16-06-N01.git
-cd 16-06-N01
+git clone https://github.com/nielday/Nhhom7-odoo.git
+cd Nhhom7-odoo
 ```
 
 ### 4.3. Cài đặt dependencies
@@ -233,7 +233,7 @@ Sau khi đăng nhập vào Odoo (http://localhost:8069):
 ## 📁 6. Cấu trúc thư mục
 
 ```
-16-06-N01/
+Nhhom7-odoo/
 ├── addons/
 │   ├── customer_management/      # Module quản lý khách hàng
 │   │   ├── models/               # Models (Customer, Product, Order...)
